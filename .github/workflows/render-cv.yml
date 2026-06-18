@@ -25,12 +25,13 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
-          bundler-cache: true
+          bundler-cache: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install RenderCV
         run: |
+          bundle install --jobs 4 --retry 3
           pip install -r requirements.txt
       - name: RenderCV
         run: |
