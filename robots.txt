@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://efburnham.github.ioal-folio/sitemap.xml
+Sitemap: https://efburnham.github.io/sitemap.xml
