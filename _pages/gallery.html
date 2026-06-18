@@ -1,0 +1,291 @@
+---
+layout: page
+title: Gallery
+permalink: /gallery/
+nav: true
+nav_order: 2
+description: A collection of photos that showcase my time as a professional astronomer.
+toc:
+  sidebar: left
+---
+
+<style>
+  .gallery-masonry {
+    column-count: 1;
+    column-gap: 1rem;
+  }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin: 0 0 1rem;
+  }
+
+  .gallery-item figure {
+    margin: 0;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+  }
+
+  .gallery-image-button {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    text-align: left;
+  }
+
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .gallery-lightbox.is-open {
+    display: block;
+  }
+
+  .gallery-lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    z-index: 2;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .gallery-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.33);
+  }
+
+  .gallery-lightbox-prev {
+    left: 0.8rem;
+  }
+
+  .gallery-lightbox-next {
+    right: 0.8rem;
+  }
+
+  .gallery-lightbox-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem 5.2rem;
+  }
+
+  .gallery-lightbox-content img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .gallery-lightbox-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.7rem 1rem 0.95rem;
+    color: #f2f2f2;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0));
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .gallery-lightbox-title {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  @media (min-width: 768px) {
+    .gallery-masonry {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .gallery-masonry {
+      column-count: 3;
+    }
+  }
+</style>
+
+{% assign empty_array = '' | split: ',' %}
+{% assign albums = site.data.gallery.albums | default: empty_array %}
+
+{% if albums and albums.size > 0 %}
+{% for album in albums %}
+<section style="margin: 2rem 0;">
+  <h2>{{ album.title }}</h2>
+  {% if album.description %}
+  <p>{{ album.description }}</p>
+  {% endif %}
+
+  {% assign items = album.items | default: empty_array %}
+  {% if items and items.size > 0 %}
+  <div class="gallery-masonry">
+    {% for item in items %}
+    <div class="gallery-item">
+      <figure>
+        <button
+          type="button"
+          class="gallery-image-button"
+          aria-label="Expand image"
+          data-gallery-src="{{ item.image | prepend: '/' | relative_url }}"
+          data-gallery-title="{{ item.title | default: '' | escape }}"
+          data-gallery-caption="{{ item.caption | default: '' | escape }}"
+        >
+          <img src="{{ item.image | prepend: '/' | relative_url }}" alt="{{ item.alt | default: item.caption | default: item.title }}" loading="eager" decoding="async">
+        </button>
+
+        {% if item.title or item.caption %}
+        <figcaption style="margin-top: 0.75rem;">
+          {% if item.title %}
+          <strong>{{ item.title }}</strong>
+          {% endif %}
+          {% if item.caption %}
+          <div style="margin-top: 0.4rem;">{{ item.caption }}</div>
+          {% endif %}
+        </figcaption>
+        {% endif %}
+      </figure>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endfor %}
+{% else %}
+<p>Add entries to <code>_data/gallery.yml</code> to populate this page.</p>
+{% endif %}
+
+<div id="gallery-lightbox" class="gallery-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded gallery image">
+  <button id="gallery-lightbox-close" class="gallery-lightbox-close" type="button" aria-label="Close expanded image">X</button>
+  <button id="gallery-lightbox-prev" class="gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>
+  <button id="gallery-lightbox-next" class="gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="Next image">&#10095;</button>
+  <div class="gallery-lightbox-content">
+    <img id="gallery-lightbox-image" src="" alt="">
+  </div>
+  <div class="gallery-lightbox-meta">
+    <div id="gallery-lightbox-title" class="gallery-lightbox-title"></div>
+    <div id="gallery-lightbox-caption"></div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const lightbox = document.getElementById("gallery-lightbox");
+    const closeButton = document.getElementById("gallery-lightbox-close");
+    const previousButton = document.getElementById("gallery-lightbox-prev");
+    const nextButton = document.getElementById("gallery-lightbox-next");
+    const image = document.getElementById("gallery-lightbox-image");
+    const title = document.getElementById("gallery-lightbox-title");
+    const caption = document.getElementById("gallery-lightbox-caption");
+    const triggers = Array.from(document.querySelectorAll(".gallery-image-button"));
+    let currentIndex = 0;
+
+    if (!lightbox || !closeButton || !previousButton || !nextButton || !image || !title || !caption || !triggers.length) {
+      return;
+    }
+
+    const showImageAt = (index) => {
+      const total = triggers.length;
+      currentIndex = (index + total) % total;
+      const trigger = triggers[currentIndex];
+      const src = trigger.getAttribute("data-gallery-src") || "";
+      const imgTitle = trigger.getAttribute("data-gallery-title") || "";
+      const imgCaption = trigger.getAttribute("data-gallery-caption") || "";
+
+      image.setAttribute("src", src);
+      image.setAttribute("alt", imgTitle || imgCaption || "Expanded gallery image");
+      title.textContent = imgTitle;
+      caption.textContent = imgCaption;
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      image.setAttribute("src", "");
+      image.setAttribute("alt", "");
+      title.textContent = "";
+      caption.textContent = "";
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        showImageAt(triggers.indexOf(trigger));
+
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+    previousButton.addEventListener("click", () => showImageAt(currentIndex - 1));
+    nextButton.addEventListener("click", () => showImageAt(currentIndex + 1));
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("is-open")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showImageAt(currentIndex - 1);
+      }
+
+      if (event.key === "ArrowRight") {
+        showImageAt(currentIndex + 1);
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,65 @@
+albums:
+  
+  - title: Science
+    items:
+    - title: DAWN Cake Talk (2026)
+      image: assets/img/cake_talk.jpeg
+      caption: I had the opportunity to give a talk about my research at DAWN, and (in the Danish fashion) they have cake during research talks!
+    - title: From Molecules to Galaxies Research Showcase Talk (2025)
+      image: assets/img/molecules_to_galaxies.jpg
+      caption: I ended up winning first place for a talk competition in the Eberly College of Science at Penn State.
+  
+  - title: Astronomy
+    items:
+      - title: Friends (2024)
+        image: assets/img/friends.jpeg
+        caption: I'm grateful that I've had the chance to make such good friends while pursuing my career. This is a photo of me and some other grad students seeing the aurora (from left to right, Kyle Neumann, Eduardo Gonzalez, me, Christian Robles, Tristen Sextro, Miranda Zak, Aditi Gangadharan, Maddy Reich, Thomas Gaudin, photo taken by Austin Marlow).
+      - title: Illuminated (2021)
+        image: assets/img/moon.jpeg
+        caption: This was the first time I ever looked through a telescope.
+      - title: The Milky Way above McDonald Observatory (2021)
+        image: assets/img/milky_way.jpeg
+        caption: My second time seeing the Milky Way. You can see my favorite constellation, the Pleiades, in the upper left corner of the image.
+      - title: Dome by Moonlight (2021)
+        image: assets/img/dome.jpeg
+        caption: This is the dome of the 2.7 m Harlan J. Smith Telescope at McDonald Observatory.
+      - title: A Beautiful Sunset is an Astronomer's Biggest Fear (2021)
+        image: assets/img/mcd_pano.jpeg
+        caption: This is a photo of the sunset from the night of my first ever observing run. 
+      - title: Red Light Therapy (2021)
+        image: assets/img/exposure.jpeg
+        caption: This is a photo of the inside of the dome of the 0.9 m telescope at McDonald Observatory. 
+      - title: Solar Maximum (2024)
+        image: assets/img/aurora.jpeg
+        caption: I got lucky a few times while living in State College to see the aurora borealis. 
+      
+      
+  - title: Copenhagen
+    description: I spent the Summer of 2026 in Copenhagen, Denmark as a resident at DAWN. Here are some photos from my time there.
+    items:
+      - title: Frederik's Church (2026)
+        image: assets/img/marmorkirken.JPG
+      - title: Prinsesse Marie at Sunset (2026)
+        image: assets/img/statue.jpeg
+      - title: Bikes! (2026)
+        image: assets/img/bikes.jpeg
+        caption: I was too scared to ride a bike while I was there...
+
+  - title: Art Portfolio
+    description: Some original art that I've done over the years; I don't do it much anymore.
+    items:
+      - title: Tea for Two (2015). Oil pastel on paper. 
+        image: assets/img/tea.jpeg
+        caption: I ended up going to a state art contest with this piece, and it started my journey on competing with my art.
+      - title: Black Momma (2018). Colored pencil and watercolor on paper.
+        image: assets/img/momma.jpeg
+        caption: My family has always had chickens, and they are my favorite animal. This is of one of my favorite flock members, a Black Australorp named Black Momma. I submitted this to a livestock art contest.
+      - title: Self Portrait (2018). Micropen and marker on paper.
+        image: assets/img/self_portrait.jpeg
+        caption: I did this piece as part of my AP Art portolio, and where my signature style of drawing portraits started.
+      - title: Sisters (2018). Micropen and pastel on paper.
+        image: assets/img/sisters.jpeg
+        caption: This is of the late Queen Elizabeth II and her sister Princess Margaret. I did this piece around the time I was watching "The Crown."
+      - title: In the Hands of Gods (2019). Ink and micropen on paper.
+        image: assets/img/hand.jpeg
+        caption: This one is special to me. I think recent events and my own maturity have recontexualized how I feel about this piece, but I think that the ultimate meaning is that man is the ruler of the world(s) that we have created. But, they can easily slip from our grasp.

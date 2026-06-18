@@ -1,0 +1,52 @@
+{% comment %}
+  Render a list of first-author publications from site.data.bib_publications.
+  Falls back to manual CV entries only when bib data is unavailable.
+{% endcomment %}
+
+{% assign bib_entries = site.data.bib_publications.first_author | default: empty_array %}
+{% if bib_entries == blank or bib_entries.size == 0 %}
+  {% assign bib_entries = entries | default: empty_array %}
+{% endif %}
+
+{% if bib_entries and bib_entries != empty_array %}
+  <ul class="card-text font-weight-light list-group list-group-flush">
+    {% for entry in bib_entries %}
+      <li class="list-group-item">
+        {% if entry.ads_url %}
+          <h6 class="title font-weight-bold mb-1">
+            <a href="{{ entry.ads_url }}" target="_blank" rel="noopener noreferrer">{{ entry.title }}</a>
+          </h6>
+        {% else %}
+          <h6 class="title font-weight-bold mb-1">{{ entry.title }}</h6>
+        {% endif %}
+
+        <p class="mb-1">
+          {% if entry.authors %}
+            <strong>
+              {% assign highlighted_authors = "" %}
+              {% for author in entry.authors %}
+                {% if author contains "Burnham" or author contains "burnham" %}
+                  {% capture author_html %}<span style="color: var(--global-theme-color);">{{ author }}</span>{% endcapture %}
+                {% else %}
+                  {% capture author_html %}{{ author }}{% endcapture %}
+                {% endif %}
+                {% if forloop.first %}
+                  {% assign highlighted_authors = author_html %}
+                {% else %}
+                  {% assign highlighted_authors = highlighted_authors | append: "; " | append: author_html %}
+                {% endif %}
+              {% endfor %}
+              {{ highlighted_authors }}
+            </strong>
+          {% endif %}
+          {% if entry.year %} ({{ entry.year }}).{% endif %}
+          {% if entry.title %} {{ entry.title }}.{% endif %}
+          {% if entry.venue %} <em>{{ entry.venue }}</em>{% endif %}
+          {% if entry.volume %}, {{ entry.volume }}{% endif %}
+          {% if entry.number %}({{ entry.number }}){% endif %}
+          {% if entry.pages %}, {{ entry.pages }}{% endif %}.
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

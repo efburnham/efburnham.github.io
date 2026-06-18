@@ -1,0 +1,63 @@
+{% comment %}
+  Render a nested section of professional presentations.
+  Supports subcategories like Invited Talks, Contributed Talks, and Contributed Posters.
+{% endcomment %}
+
+{% assign empty_array = '' | split: ',' %}
+
+{% for presentation_group in presentation_sections %}
+  {% assign group_title = presentation_group[0] %}
+  {% assign group_entries = presentation_group[1] %}
+
+  {% if group_entries and group_entries != empty_array %}
+    <div class="mt-2">
+      <h6 class="font-weight-bold">{{ group_title }}</h6>
+      <ul class="card-text font-weight-light list-group list-group-flush">
+        {% for entry in group_entries %}
+          <li class="list-group-item">
+            {% if entry.title %}
+              <strong>{{ entry.title }}</strong>
+            {% endif %}
+
+            {% if entry.name and group_title == 'Skills' %}
+              <div class="mt-1">
+                <span class="font-weight-medium">{{ entry.name }}</span>
+                {% if entry.level %}
+                  <span class="text-muted">— {{ entry.level }}</span>
+                {% endif %}
+              </div>
+              {% if entry.keywords %}
+                <div class="mt-1 text-muted">{{ entry.keywords }}</div>
+              {% endif %}
+            {% endif %}
+
+            {% if entry.venues %}
+              <div class="mt-1">
+                {% for venue in entry.venues %}
+                  <div>
+                    {% if venue.venue %}
+                      {{ venue.venue }}
+                    {% endif %}
+                    {% if venue.location %}
+                      , {{ venue.location }}
+                    {% endif %}
+                    {% if venue.date %}
+                      — {{ venue.date }}
+                    {% endif %}
+                    {% if venue.award %}
+                      ({{ venue.award }})
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if entry.summary and group_title != 'Skills' %}
+              <div class="mt-1 text-muted">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endfor %}

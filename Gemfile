@@ -50,7 +50,7 @@ group :al_folio_plugins do
 
     gem 'al_analytics', '= 1.0.0'
     gem 'al_citations', '= 1.0.1'
-    gem 'al_ext_posts', '= 1.0.1'
+    # gem 'al_ext_posts', '= 1.0.1'  # disabled because external posts and repository page are not being used
     gem 'al_img_tools', '= 1.0.2'
     gem 'al_search', '= 1.0.2'
     gem 'al_charts', '= 1.0.1'

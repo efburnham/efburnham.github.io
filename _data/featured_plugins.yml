@@ -165,21 +165,6 @@
   demo_path: /publications/
   maintainer_contact: https://github.com/al-org-dev
   notes: Bibliography rendering and publication runtime behavior.
-
-- name: al_ext_posts
-  repo_url: https://github.com/al-org-dev/al-ext-posts
-  gem_name: al_ext_posts
-  jekyll_plugin_id: al_ext_posts
-  owner: al-org-dev
-  license: See plugin repo LICENSE
-  compat:
-    al_folio_min: "1.0.0"
-    al_folio_max: "1.x"
-  status: bundled
-  demo_path: /blog/
-  maintainer_contact: https://github.com/al-org-dev
-  notes: External posts ingestion helpers.
-
 - name: al_charts
   repo_url: https://github.com/al-org-dev/al-charts
   gem_name: al_charts

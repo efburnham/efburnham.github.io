@@ -1,0 +1,15 @@
+{% comment %}
+  Render a simple skills section for CV compatibility.
+{% endcomment %}
+
+<ul class="card-text font-weight-light list-group list-group-flush">
+  {% for entry in entries %}
+    <li class="list-group-item">
+      <strong>{{ entry.name }}</strong>
+      {% if entry.level %}<span class="text-muted"> — {{ entry.level }}</span>{% endif %}
+      {% if entry.keywords %}
+        <div class="mt-1 text-muted">{{ entry.keywords }}</div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

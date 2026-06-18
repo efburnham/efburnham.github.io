@@ -1,34 +1,200 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+# Sorted from most frequent to least frequent collaborator
+# Appears on 6 paper(s)
+"burnham":
+  - firstname: ["Emilie"]
+    url: https://scholar.google.com/scholar?q=Emilie+Burnham
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"leja":
+  - firstname: ["Joel"]
+    url: https://scholar.google.com/scholar?q=Joel+Leja
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+# Appears on 1 paper(s)
+"buat":
+  - firstname: ["Véronique"]
+    url: https://scholar.google.com/scholar?q=Buat+Véronique
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+# Appears on 4 paper(s)
+"bezanson":
+  - firstname: ["Rachel"]
+    url: https://scholar.google.com/scholar?q=Bezanson+Rachel
 
-"przibram":
+# Appears on 4 paper(s)
+"greene":
+  - firstname: ["Jenny E"]
+    url: https://scholar.google.com/scholar?q=Greene+Jenny E
+
+# Appears on 3 paper(s)
+"wang":
+  - firstname: ["Bingjie"]
+    url: https://scholar.google.com/scholar?q=Wang+Bingjie
+
+# Appears on 3 paper(s)
+"conner":
+  - firstname: ["Michael J"]
+    url: https://scholar.google.com/scholar?q=Conner+Michael J
+
+# Appears on 3 paper(s)
+"mintz":
+  - firstname: ["Abby"]
+    url: https://scholar.google.com/scholar?q=Mintz+Abby
+
+# Appears on 2 paper(s)
+"cleri":
+  - firstname: ["Nikko J"]
+    url: https://scholar.google.com/scholar?q=Cleri+Nikko J
+
+# Appears on 2 paper(s)
+"atek":
+  - firstname: ["Hakim"]
+    url: https://scholar.google.com/scholar?q=Atek+Hakim
+
+# Appears on 2 paper(s)
+"levitt":
+  - firstname: ["Danielle E"]
+    url: https://scholar.google.com/scholar?q=Levitt+Danielle E
+
+# Appears on 2 paper(s)
+"wohlgemuth":
+  - firstname: ["Kealey J"]
+    url: https://scholar.google.com/scholar?q=Wohlgemuth+Kealey J
+
+# Appears on 2 paper(s)
+"mota":
+  - firstname: ["Jacob A"]
+    url: https://scholar.google.com/scholar?q=Mota+Jacob A
+
+# Appears on 2 paper(s)
+"setton":
+  - firstname: ["David J"]
+    url: https://scholar.google.com/scholar?q=Setton+David J
+
+# Appears on 2 paper(s)
+"suess":
+  - firstname: ["Katherine A"]
+    url: https://scholar.google.com/scholar?q=Suess+Katherine A
+
+# Appears on 1 paper(s)
+"olivier":
+  - firstname: ["Grace M"]
+    url: https://scholar.google.com/scholar?q=Olivier+Grace M
+
+# Appears on 1 paper(s)
+"backhaus":
+  - firstname: ["Bren E"]
+    url: https://scholar.google.com/scholar?q=Backhaus+Bren E
+
+# Appears on 1 paper(s)
+"papovich":
+  - firstname: ["Casey"]
+    url: https://scholar.google.com/scholar?q=Papovich+Casey
+
+# Appears on 1 paper(s)
+"trump":
+  - firstname: ["Jonathan R"]
+    url: https://scholar.google.com/scholar?q=Trump+Jonathan R
+
+# Appears on 1 paper(s)
+"arrabal haro":
+  - firstname: ["Pablo"]
+    url: https://scholar.google.com/scholar?q=ArrabalHaro+Pablo
+
+# Appears on 1 paper(s)
+"buat":
+  - firstname: ["Véronique"]
+    url: https://scholar.google.com/scholar?q=Buat+Véronique
+
+# Appears on 1 paper(s)
+"dayal":
+  - firstname: ["Pratika"]
+    url: https://scholar.google.com/scholar?q=Dayal+Pratika
+
+# Appears on 1 paper(s)
+"feldmann":
+  - firstname: ["Robert"]
+    url: https://scholar.google.com/scholar?q=Feldmann+Robert
+
+# Appears on 1 paper(s)
+"johnson":
+  - firstname: ["Benjamin D"]
+    url: https://scholar.google.com/scholar?q=Johnson+Benjamin D
+
+# Appears on 1 paper(s)
+"collier":
+  - firstname: ["J Jason"]
+    url: https://scholar.google.com/scholar?q=Collier+Jason
+
+# Appears on 1 paper(s)
+"brammer":
+  - firstname: ["Gabriel"]
+    url: https://scholar.google.com/scholar?q=Brammer+Gabriel
+
+# Appears on 1 paper(s)
+"mitsuhashi":
+  - firstname: ["Ikki"]
+    url: https://scholar.google.com/scholar?q=Mitsuhashi+Ikki
+
+# Appears on 1 paper(s)
+"khullar":
+  - firstname: ["Gourav"]
+    url: https://scholar.google.com/scholar?q=Khullar+Gourav
+
+# Appears on 1 paper(s)
+"nanayakkara":
+  - firstname: ["Themiya"]
+    url: https://scholar.google.com/scholar?q=Nanayakkara+Themiya
+
+# Appears on 1 paper(s)
+"glazebrook":
   - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+    url: https://scholar.google.com/scholar?q=Glazebrook+Karl
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+# Appears on 1 paper(s)
+"gonzales":
+  - firstname: ["Owen"]
+    url: https://scholar.google.com/scholar?q=Gonzales+Owen
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+# Appears on 1 paper(s)
+"iyer":
+  - firstname: ["Kartheik G"]
+    url: https://scholar.google.com/scholar?q=Iyer+Kartheik G
 
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+# Appears on 1 paper(s)
+"wellons":
+  - firstname: ["Sarah"]
+    url: https://scholar.google.com/scholar?q=Wellons+Sarah
+
+# Appears on 1 paper(s)
+"lewis":
+  - firstname: ["Zach J"]
+    url: https://scholar.google.com/scholar?q=Lewis+Zach J
+
+# Appears on 1 paper(s)
+"helton":
+  - firstname: ["Jakob M"]
+    url: https://scholar.google.com/scholar?q=Helton+Jakob M
+
+# Appears on 1 paper(s)
+"curtis":
+  - firstname: ["Olivia"]
+    url: https://scholar.google.com/scholar?q=Curtis+Olivia
+
+# Appears on 1 paper(s)
+"de graaff":
+  - firstname: ["Anna"]
+    url: https://scholar.google.com/scholar?q=de Graaff+Anna
+
+# Appears on 1 paper(s)
+"hirschmann":
+  - firstname: ["Michaela"]
+    url: https://scholar.google.com/scholar?q=Hirschmann+Michaela
+
+# Appears on 1 paper(s)
+"katz":
+  - firstname: ["Harley"]
+    url: https://scholar.google.com/scholar?q=Katz+Harley
+
+# Appears on 1 paper(s)
+"maseda":
+  - firstname: ["Michael V"]
+    url: https://scholar.google.com/scholar?q=Maseda+Michael V
