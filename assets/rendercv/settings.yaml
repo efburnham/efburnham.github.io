@@ -1,4 +1,4 @@
-# RenderCV settings for CV automation
+# RenderCV settings for CV automation (CI trigger marker)
 # for details on settings, see https://docs.rendercv.com/user_guide/yaml_input_structure/settings/
 settings:
   render_command:
