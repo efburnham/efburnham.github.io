@@ -16,8 +16,18 @@
 
   .selected-publication-link:hover,
   .selected-publication-link:focus-visible {
-    color: var(--global-theme-color);
+    color: var(--global-theme-color) !important;
     text-decoration-color: var(--global-theme-color);
+  }
+
+  .selected-publication-link strong {
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .selected-publication-link:hover strong,
+  .selected-publication-link:focus-visible strong {
+    color: var(--global-theme-color) !important;
   }
 </style> <h2 id="selected-publications">Selected Publications</h2> <ul class="list-unstyled"> <li class="mb-4"> <p class="mb-1" style="font-size: 1.1rem; line-height: 1.5;"> <a href="https://ui.adsabs.harvard.edu/abs/2026ApJ..1001..205B/abstract" target="_blank" rel="noopener noreferrer" class="selected-publication-link"><strong>It's More Complicated Than You Think: A Forward Model to Infer the Recent Star Formation History, Bursty or Not, of Galaxy Populations</strong></a> (2026). </p> <figure class="mt-2 mb-0"> <img src="/assets/img/Burnham2026_flexPSD.jpg" alt="Example figure for It's More Complicated Than You Think: A Forward Model to Infer the Recent Star Formation History, Bursty or Not, of Galaxy Populations" class="img-fluid rounded"> <figcaption class="text-muted mt-1" style="font-size: 0.85rem; line-height: 1.4;">Effect of the flex-PSD model on observable distributions. Upper-left panel: two realizations of the flex-PSD model, a bursty model (blue), and a smooth model (red). For the smooth model, we display the lognormal Gaussian components as dashed lines with each normalization annotated with the flex-PSD model parameter name. We additionally show the approximate timescales that are probed by the dominant stellar spectral type in the integrated light of an SED. Upper-right panel: two example SFHs sampled from the two models. Lower panels: marginal distributions of observed spectral features from mock populations simulated from each PSD.</figcaption> </figure> </li> </ul> </div> <div class="social"> <div class="contact-icons"> <a href="/assets/pdf/cv.pdf" title="Cv pdf"><i class="ai ai-cv"></i></a> <a href="mailto:efb5552@psu.edu" title="Email"><i class="fa-solid fa-envelope"></i></a> <a href="https://github.com/efburnham" title="Github username" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-github"></i></a> <a href="https://scholar.google.com/citations?user=H8cGhHcAAAAJ" title="Scholar userid" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a> </div> <div class="contact-note">If you would like to contact me, please email <a href="mailto:efb5552@psu.edu">efb5552@psu.edu</a>. </div> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Emilie Burnham. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: June 19, 2026. </div> </footer> <script>
   window.alFolio = {
