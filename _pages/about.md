@@ -18,7 +18,7 @@ selected_papers: false # custom selected publications block rendered below
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: true # includes a list of news items
+  enabled: false # hide news section on About page
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
@@ -38,6 +38,23 @@ A central focus of my research is understanding the **burstiness of star formati
 
 Outside of astronomy, I enjoy spending hours experimenting in the kitchen, reading books far too large to in my bag, and writing stories of my own.
 
+<style>
+  .selected-publication-link {
+    color: var(--global-text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .selected-publication-link:hover,
+  .selected-publication-link:focus-visible {
+    color: var(--global-theme-color);
+    text-decoration-color: var(--global-theme-color);
+  }
+</style>
+
 
 
 ## Selected Publications
@@ -49,9 +66,9 @@ Outside of astronomy, I enjoy spending hours experimenting in the kitchen, readi
     <li class="mb-4">
       <p class="mb-1" style="font-size: 1.1rem; line-height: 1.5;">
         {% if entry.ads_url %}
-          <a href="{{ entry.ads_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-theme-color); font-size: 1.1rem; font-weight: 600; text-decoration: none;"><strong>{{ entry.title }}</strong></a>
+          <a href="{{ entry.ads_url }}" target="_blank" rel="noopener noreferrer" class="selected-publication-link"><strong>{{ entry.title }}</strong></a>
         {% elsif entry.url %}
-          <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-theme-color); font-size: 1.1rem; font-weight: 600; text-decoration: none;"><strong>{{ entry.title }}</strong></a>
+          <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer" class="selected-publication-link"><strong>{{ entry.title }}</strong></a>
         {% else %}
           <strong style="font-size: 1.1rem;">{{ entry.title }}</strong>
         {% endif %}

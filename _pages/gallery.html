@@ -170,10 +170,10 @@ toc:
           class="gallery-image-button"
           aria-label="Expand image"
           data-gallery-src="{{ item.image | prepend: '/' | relative_url }}"
-          data-gallery-title="{{ item.title | default: '' | escape }}"
-          data-gallery-caption="{{ item.caption | default: '' | escape }}"
+          data-gallery-title="{{ item.title | default: '' | strip | escape }}"
+          data-gallery-caption="{{ item.caption | default: '' | strip | escape }}"
         >
-          <img src="{{ item.image | prepend: '/' | relative_url }}" alt="{{ item.alt | default: item.caption | default: item.title }}" loading="eager" decoding="async">
+          <img src="{{ item.image | prepend: '/' | relative_url }}" alt="{{ item.alt | default: item.caption | default: item.title | strip | escape }}" loading="eager" decoding="async" data-no-zoom="true">
         </button>
 
         {% if item.title or item.caption %}

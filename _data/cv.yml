@@ -5,13 +5,7 @@ cv:
   email: efb5552@psu.edu
   location: State College, PA
   image: ''
-  summary: I am a PhD student in Astronomy and Astrophysics at Penn State University.
-    My research focuses on understanding the star formation histories of galaxies
-    across cosmic time, with a particular emphasis on burstiness. I use a combination
-    of observational data and theoretical modeling to investigate how star formation
-    varies in different populations of galaxies. My work has implications for our
-    understanding of galaxy formation and evolution, as well as the processes that
-    regulate star formation in the universe.
+  summary: Galaxy formation and evolution; large-scale surveys; scientific software development; machine-learning; stellar population synthesis; SED fitting; cosmological simulations.
   social_networks:
   - network: GitHub
     username: efburnham
@@ -29,7 +23,7 @@ cv:
       url: https://science.psu.edu/astro
       studyType: PhD, MS
       start_date: 2023
-      end_date:
+      end_date: 2029
       highlights:
       - 'Thesis Advisor: Dr. Joel Leja.'
       - 'Expected graduation date: May 2029.'
@@ -60,8 +54,9 @@ cv:
       start_date: 2026
       end_date: 2026
       summary: Mentored undergraduate students participating in the program and led
-        workshops on research skills in galaxy formation and evolution. Continued
+        workshops on research skills used in the field of galaxy formation and evolution. Continued
         thesis research while in residence at DAWN.
+      url: https://www.dawnires.com
     - company: University of Colorado at Boulder
       position: NSF REU Research Assistant
       location: Remote
@@ -221,14 +216,14 @@ cv:
         summary: Presented a public lecture on how astronomers use different wavelengths
           of light to study the Milky Way galaxy, showcasing the diverse phenomena that
           can be observed across the electromagnetic spectrum.
-      - title: Public Lecture on "Suprises at the Edge of the Observable Universe with
+      - title: Public Lecture on "Suprises at the Edge fo the Universe Found with
           JWST"
         organization: Central Pennsylvania Observer's Society
         date: '2024'
         location: State College, PA
-        summary: Presented work on the latest discoveries from the JWST,
-          focusing on unexpected findings about galaxies in the early universe and their
-          implications for our understanding of cosmic history.
+        summary: Presented the latest discoveries from the JWST,
+          focusing on unexpected findings about galaxies in the early Universe and their
+          implications for our understanding of how galaxies form and evolve.
     Teaching Experience:
       - institution: Penn State University
         course: 'Students Together for Astronomical Research (STAR) Program'
