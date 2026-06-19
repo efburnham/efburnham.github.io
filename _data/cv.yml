@@ -1,5 +1,4 @@
 ---
-# Trigger CI refresh of generated CV PDF artifacts.
 cv:
   name: Emilie Burnham
   label: PhD Student in Astronomy and Astrophysics
