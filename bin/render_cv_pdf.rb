@@ -374,56 +374,8 @@ end
 
 def build_rendercv_input(cv_root, config)
   cv_data = cv_root["cv"] || {}
-  design = load_yaml(DESIGN_PATH)["design"] || {}
-  locale = load_yaml(LOCALE_PATH)["locale"] || {}
-  raw_settings = load_yaml(SETTINGS_PATH)
-  raw_render_settings = raw_settings["rendercv_settings"] || raw_settings["settings"] || {}
   today = Date.today
   dated_pdf_name = "BurnhamEmilieCV_#{today.strftime('%Y-%m-%d')}.pdf"
-
-  design["theme"] = "classic"
-  if design["page"].is_a?(Hash)
-    design["page"].delete("show_footer")
-    design["page"].delete("show_top_note")
-    design["page"]["show_last_updated_date"] = true
-    design["page"]["show_page_numbering"] = true
-  end
-  design["colors"] = {
-    "text" => "rgb(0,0,0)",
-    "name" => "rgb(0,0,0)",
-    "connections" => "rgb(0,0,0)",
-    "section_titles" => "rgb(0,0,0)",
-    "links" => "rgb(0,0,0)",
-    "last_updated_date_and_page_numbering" => "rgb(0,0,0)",
-  }
-  design["text"] = (design["text"] || {}).merge(
-    "font_family" => "Times New Roman",
-    "alignment" => "left",
-  )
-  design["header"] = (design["header"] || {}).merge(
-    "name_font_family" => "Times New Roman",
-    "connections_font_family" => "Times New Roman",
-    "alignment" => "left",
-    "use_icons_for_connections" => false,
-  )
-  design["section_titles"] = (design["section_titles"] || {}).merge(
-    "font_family" => "Times New Roman",
-  )
-  locale["language"] = "en"
-  locale["last_updated_date_template"] = "Last updated #{today.strftime('%B %-d, %Y')}"
-
-  render_command = (raw_render_settings["render_command"] || {}).dup
-  render_command.delete("design")
-  render_command.delete("locale")
-  render_command.delete("rendercv_settings")
-  render_command.delete("dont_generate_typst")
-  render_command["output_folder_name"] = "assets/rendercv/rendercv_output"
-  render_command.delete("pdf_path")
-  render_command.delete("typst_path")
-  render_command.delete("markdown_path")
-  render_command.delete("html_path")
-  render_command.delete("png_path")
-  rendercv_settings = { "render_command" => render_command }
 
   actual_location = cv_data["location"]
   if !present?(actual_location) && cv_data["address"].is_a?(Hash)
@@ -455,9 +407,6 @@ def build_rendercv_input(cv_root, config)
 
   compact_hash({
     "cv" => cv,
-    "design" => design,
-    "locale" => locale,
-    "rendercv_settings" => rendercv_settings,
   }).merge({ "_dated_pdf_name" => dated_pdf_name })
 end
 
@@ -629,7 +578,7 @@ Tempfile.create(["cv.generated", ".yml"], ROOT.join("_data")) do |temp|
   temp.write(rendercv_input.to_yaml)
   temp.flush
 
-  cmd = [rendercv_bin, "render", temp.path]
+  cmd = [rendercv_bin, "render", temp.path, "-o", OUTPUT_DIR.to_s]
   stdout, stderr, status = Open3.capture3(*cmd, chdir: ROOT.to_s)
 
   puts stdout unless stdout.empty?
