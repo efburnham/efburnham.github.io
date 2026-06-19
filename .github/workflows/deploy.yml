@@ -97,7 +97,13 @@ jobs:
           bundle install --jobs 4 --retry 3
           pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
-          bundle exec jekyll build
+          bundle exec jekyll build --baseurl ""
+      - name: Validate root asset paths ✅
+        run: |
+          if grep -R -n '"/al-folio/assets/' _site --include='*.html'; then
+            echo "Found /al-folio asset paths in generated site. This would break CSS/JS on a root user site."
+            exit 1
+          fi
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
