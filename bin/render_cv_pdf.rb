@@ -372,7 +372,7 @@ def build_rendercv_sections(cv_data)
   rendercv_sections
 end
 
-def build_rendercv_input(cv_root, config)
+def build_rendercv_input(cv_root, design_config, locale_config, settings_config)
   cv_data = cv_root["cv"] || {}
 
   actual_location = cv_data["location"]
@@ -405,6 +405,9 @@ def build_rendercv_input(cv_root, config)
 
   compact_hash({
     "cv" => cv,
+    "design" => design_config["design"],
+    "locale" => locale_config["locale"],
+    "settings" => settings_config["settings"],
   })
 end
 
@@ -524,6 +527,9 @@ abort("Missing #{LOCALE_PATH}") unless LOCALE_PATH.exist?
 
 config = load_yaml(CONFIG_PATH)
 cv_root = load_yaml(CV_PATH)
+design_config = load_yaml(DESIGN_PATH)
+locale_config = load_yaml(LOCALE_PATH)
+settings_config = load_yaml(SETTINGS_PATH)
 
 cv_data = cv_root["cv"] || {}
 sections = cv_data["sections"] || {}
@@ -564,7 +570,7 @@ cv_data["sections"] = sections
 normalize_cv_for_pdf!(cv_data)
 cv_root["cv"] = cv_data
 
-rendercv_input = build_rendercv_input(cv_root, config)
+rendercv_input = build_rendercv_input(cv_root, design_config, locale_config, settings_config)
 
 rendercv_bin = detect_rendercv_bin
 abort("RenderCV executable not found. Install dependencies from requirements.txt first.") if rendercv_bin.nil?
