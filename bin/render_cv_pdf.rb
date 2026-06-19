@@ -15,7 +15,7 @@ SETTINGS_PATH = ROOT.join("assets/rendercv/settings.yaml")
 DESIGN_PATH = ROOT.join("assets/rendercv/design.yaml")
 LOCALE_PATH = ROOT.join("assets/rendercv/locale.yaml")
 OUTPUT_DIR = ROOT.join("assets/rendercv/rendercv_output")
-STABLE_PDF_PATH = ROOT.join("assets/pdf/cv.pdf")
+STABLE_PDF_PATH = ROOT.join("assets/pdf/BurnhamEmilieCV.pdf")
 PDF_DATA_PATH = ROOT.join("_data/cv_pdf.yml")
 
 def load_yaml(path)
@@ -374,8 +374,6 @@ end
 
 def build_rendercv_input(cv_root, config)
   cv_data = cv_root["cv"] || {}
-  today = Date.today
-  dated_pdf_name = "BurnhamEmilieCV_#{today.strftime('%Y-%m-%d')}.pdf"
 
   actual_location = cv_data["location"]
   if !present?(actual_location) && cv_data["address"].is_a?(Hash)
@@ -407,7 +405,7 @@ def build_rendercv_input(cv_root, config)
 
   compact_hash({
     "cv" => cv,
-  }).merge({ "_dated_pdf_name" => dated_pdf_name })
+  })
 end
 
 def month_value(value)
@@ -567,7 +565,6 @@ normalize_cv_for_pdf!(cv_data)
 cv_root["cv"] = cv_data
 
 rendercv_input = build_rendercv_input(cv_root, config)
-dated_pdf_name = rendercv_input.delete("_dated_pdf_name")
 
 rendercv_bin = detect_rendercv_bin
 abort("RenderCV executable not found. Install dependencies from requirements.txt first.") if rendercv_bin.nil?
@@ -593,11 +590,9 @@ generated_pdf = resolve_pdf_output_path(SETTINGS_PATH)
 if generated_pdf && generated_pdf.exist?
   FileUtils.mkdir_p(STABLE_PDF_PATH.dirname)
   FileUtils.cp(generated_pdf, STABLE_PDF_PATH)
-  dated_pdf_path = STABLE_PDF_PATH.dirname.join(dated_pdf_name)
-  FileUtils.cp(generated_pdf, dated_pdf_path)
   PDF_DATA_PATH.write({
-    "path" => "/assets/pdf/#{dated_pdf_name}",
-    "filename" => dated_pdf_name,
+    "path" => "/assets/pdf/BurnhamEmilieCV.pdf",
+    "filename" => "BurnhamEmilieCV.pdf",
     "last_updated" => Date.today.strftime("%Y-%m-%d"),
   }.to_yaml)
   puts "Copied #{generated_pdf} -> #{STABLE_PDF_PATH}"
