@@ -322,7 +322,7 @@ scholar:
   query: "@*"
   group_by: year
   group_order: descending
-  sort_by: year, month, author
+  sort_by: year, author
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid

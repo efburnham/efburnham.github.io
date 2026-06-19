@@ -50,8 +50,18 @@ Outside of astronomy, I enjoy spending hours experimenting in the kitchen, readi
 
   .selected-publication-link:hover,
   .selected-publication-link:focus-visible {
-    color: var(--global-theme-color);
+    color: var(--global-theme-color) !important;
     text-decoration-color: var(--global-theme-color);
+  }
+
+  .selected-publication-link strong {
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .selected-publication-link:hover strong,
+  .selected-publication-link:focus-visible strong {
+    color: var(--global-theme-color) !important;
   }
 </style>
 
