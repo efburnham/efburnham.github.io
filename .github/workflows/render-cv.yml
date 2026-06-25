@@ -1,4 +1,4 @@
-name: Render a CV
+name: Compile CV PDF
 on:
   push:
     branches:
@@ -8,17 +8,15 @@ on:
       - "_data/cv.yml"
       - "_bibliography/papers.bib"
       - "_config.yml"
-      - "assets/rendercv/design.yaml"
-      - "assets/rendercv/locale.yaml"
-      - "assets/rendercv/settings.yaml"
-      - "bin/render_cv_pdf.rb"
+      - "assets/cv/template.typ"
+      - "bin/compile_cv_pdf.rb"
   workflow_call:
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  rendercv:
-    name: RenderCV
+  compile-cv:
+    name: Compile CV
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,29 +24,29 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: false
+      - uses: typst-community/setup-typst@v3
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install RenderCV
+      - name: Install dependencies
         run: |
           bundle install --jobs 4 --retry 3
           pip install -r requirements.txt
-      - name: RenderCV
-        run: |
-          bundle exec ruby bin/render_cv_pdf.rb
-      - name: Upload rendercv_output as an artifact
+      - name: Compile CV
+        run: bundle exec ruby bin/compile_cv_pdf.rb
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: RenderCV Output
-          path: assets/rendercv/rendercv_output
-      - name: Push the changes
+          name: BurnhamEmilieCV
+          path: assets/pdf/BurnhamEmilieCV.pdf
+      - name: Push changes
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git add -A
+          git add assets/pdf/BurnhamEmilieCV.pdf assets/cv/cv_data.yml _data/cv_pdf.yml
           if git diff --cached --quiet; then
-            echo "No CV output changes to commit."
+            echo "No CV changes to commit."
             exit 0
           fi
-          git commit -m "chore: render the latest CV"
+          git commit -m "chore: compile CV PDF"
           git push
