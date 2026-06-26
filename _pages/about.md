@@ -28,7 +28,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a PhD student in Astronomy and Astrophysics at Penn State University, where I study galaxy formation and evolution under the supervision of Dr. Joel Leja. My research focuses on using **statistical inference and machine learning to understand the physical properties of galaxies from their spectra,** both as individual systems and as entire populations.
+I am a PhD candidate in Astronomy and Astrophysics at Penn State University, where I study galaxy formation and evolution under the supervision of Dr. Joel Leja. My research focuses on using **statistical inference and machine learning to understand the physical properties of galaxies from their spectra,** both as individual systems and as entire populations.
 
 This work is driven by a new generation of astronomical surveys. Space-based observatories such as the James Webb Space Telescope (JWST) allow us to probe the earliest galaxies during cosmic dawn, while next-generation ground-based instruments such as the Prime Focus Spectrograph (PFS) will provide an unprecedented view of galaxy evolution during cosmic noon. To meet the challenges posed by these large datasets, **I develop accelerated software tools** that enable astronomers to efficiently infer the histories and physical properties of millions of galaxies.
 
