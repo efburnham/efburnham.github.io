@@ -10,6 +10,7 @@ on:
       - "_config.yml"
       - "assets/cv/template.typ"
       - "bin/compile_cv_pdf.rb"
+      - "bin/typst_compile.py"
   workflow_call:
   workflow_dispatch:
 permissions:
@@ -24,7 +25,6 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: false
-      - uses: typst-community/setup-typst@v3
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -32,6 +32,8 @@ jobs:
         run: |
           bundle install --jobs 4 --retry 3
           pip install -r requirements.txt
+      - name: Verify typst is available
+        run: python3 -c "import typst; print('typst', typst.__version__)"
       - name: Compile CV
         run: bundle exec ruby bin/compile_cv_pdf.rb
       - name: Upload PDF artifact

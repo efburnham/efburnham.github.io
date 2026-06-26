@@ -254,19 +254,39 @@ FileUtils.mkdir_p(DATA_OUT.dirname)
 DATA_OUT.write(cv_data.to_yaml)
 puts "Wrote #{DATA_OUT}"
 
-# ── Find typst ────────────────────────────────────────────────────────────────
+# ── Find Python with typst package ───────────────────────────────────────────
 
-typst_bin =
-  ENV["TYPST_BIN"].then { |b| b if b && File.executable?(b.to_s) } ||
-  `sh -lc 'command -v typst' 2>/dev/null`.strip.then { |b| b unless b.empty? } ||
-  ROOT.join(".venv/bin/typst").then { |p| p.to_s if p.exist? }
+TYPST_COMPILE_PY = ROOT.join("bin/typst_compile.py")
 
-abort("typst not found. In CI use: typst-community/setup-typst@v3  or  pip install typst") unless typst_bin
+def find_python(root)
+  candidates = [
+    ENV["PYTHON_BIN"],
+    root.join(".venv/bin/python3.14").to_s,
+    root.join(".venv/bin/python3.13").to_s,
+    root.join(".venv/bin/python3.12").to_s,
+    root.join(".venv/bin/python3.11").to_s,
+    root.join(".venv/bin/python3").to_s,
+    root.join(".venv/bin/python").to_s,
+    `sh -lc 'command -v python3' 2>/dev/null`.strip,
+    `sh -lc 'command -v python'  2>/dev/null`.strip,
+  ].compact.reject(&:empty?)
+
+  candidates.each do |py|
+    next unless File.executable?(py.to_s)
+    result = `#{Shellwords.escape(py)} -c "import typst; print('ok')" 2>/dev/null`.strip
+    return py if result == "ok"
+  end
+  nil
+end
+
+require "shellwords"
+python_bin = find_python(ROOT)
+abort("No Python with typst package found. Run: pip install -r requirements.txt") unless python_bin
 
 # ── Compile ───────────────────────────────────────────────────────────────────
 
 FileUtils.mkdir_p(PDF_OUT.dirname)
-cmd = [typst_bin, "compile", TEMPLATE_PATH.to_s, PDF_OUT.to_s]
+cmd = [python_bin, TYPST_COMPILE_PY.to_s, TEMPLATE_PATH.to_s, PDF_OUT.to_s]
 stdout, stderr, status = Open3.capture3(*cmd, chdir: ROOT.to_s)
 puts stdout unless stdout.empty?
 warn stderr unless stderr.empty?

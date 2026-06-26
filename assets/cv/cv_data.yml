@@ -1,0 +1,90 @@
+name: Emilie Burnham
+label: PhD Candidate in Astronomy & Astrophysics
+email: efb5552@psu.edu
+location: State College, PA
+github: efburnham
+summary: >-
+  Observational astronomer focused on exoplanet atmospheres, stellar contamination,
+  and transmission spectroscopy with JWST.
+education:
+  - institution: Pennsylvania State University
+    degree: PhD
+    area: Astronomy and Astrophysics
+    start_year: 2022
+    location: State College, PA
+  - institution: University of California, Santa Cruz
+    degree: BS
+    area: Physics
+    start_year: 2018
+    end_year: 2022
+    location: Santa Cruz, CA
+research_experience:
+  - company: Penn State University
+    position: Graduate Research Assistant
+    start_year: 2022
+    location: State College, PA
+    summary: Transmission spectroscopy of exoplanet atmospheres with JWST NIRSpec and NIRISS.
+first_author_publications:
+  - title: "Transmission Spectroscopy of a Sub-Neptune with JWST NIRSpec"
+    authors:
+      - "Burnham, Emilie F."
+      - "Espinoza, Nestor"
+      - "Fortney, Jonathan J."
+    journal: The Astrophysical Journal Letters
+    year: 2024
+co_author_publications:
+  - title: "Stellar Contamination in Transmission Spectra"
+    authors:
+      - "Espinoza, Nestor"
+      - "Burnham, Emilie F."
+      - "Wakeford, Hannah R."
+    journal: The Astronomical Journal
+    year: 2023
+awards:
+  - name: NSF Graduate Research Fellowship
+    awarder: National Science Foundation
+    year: 2023
+  - name: Bunton-Waller Fellowship
+    awarder: Pennsylvania State University
+    year: 2022
+leadership_service:
+  - title: Graduate Student Representative
+    organization: Penn State Department of Astronomy
+    start_year: 2023
+    end_year: 2024
+    location: State College, PA
+outreach:
+  - title: Astronomy on Tap Speaker
+    organization: Astronomy on Tap State College
+    year: 2023
+    location: State College, PA
+presentations:
+  invited_talks:
+    - title: "Probing Exoplanet Atmospheres with JWST Transmission Spectroscopy"
+      venues:
+        - venue: Penn State University Astrophysics Seminar
+          location: State College, PA
+          year: 2024
+        - venue: University of Arizona Steward Observatory Colloquium
+          location: Tucson, AZ
+          year: 2024
+  contributed_talks:
+    - title: "Stellar Contamination Corrections for JWST Transit Observations"
+      venues:
+        - venue: American Astronomical Society 243rd Meeting
+          location: New Orleans, LA
+          year: 2024
+          award: Dissertation Talk
+  contributed_posters:
+    - title: "NIRSpec G395H Transmission Spectrum of a Sub-Neptune"
+      venues:
+        - venue: JWST Early Science Symposium
+          location: Baltimore, MD
+          year: 2023
+skills:
+  - label: Programming
+    keywords: "Python, Ruby, IDL, Bash"
+  - label: Software
+    keywords: "Jupyter, LaTeX, Git, IRAF"
+  - label: Observing
+    keywords: "JWST NIRSpec, NIRISS, Spitzer IRAC, ground-based spectroscopy"
