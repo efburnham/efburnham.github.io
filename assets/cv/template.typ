@@ -26,18 +26,20 @@
 // Gap between separate entries in a section.
 #let entry-gap = 0.65em
 // Gap between the subtitle line and the body text / bullet list below it.
-#let subtitle-body-gap = -0.1em
+#let subtitle-body-gap = -0.25em
 // Gap between individual bullet/highlight lines within one entry.
 #let item-gap = 0.32em
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
+// sticky: true keeps the heading line with the first entry on the next page.
 #let section-rule(title) = {
-  v(1.1em)
-  text(weight: "bold", size: 10.5pt, tracking: 0.8pt, upper(title))
-  v(0.1em, weak: true)
-  line(length: 100%, stroke: 0.45pt + luma(60))
-  v(0.4em)
+  block(above: 1.1em, below: 0pt, sticky: true)[
+    #text(weight: "bold", size: 10.5pt, tracking: 0.8pt, upper(title))
+    #v(0.1em, weak: true)
+    #line(length: 100%, stroke: 0.45pt + luma(60))
+    #v(0.4em)
+  ]
 }
 
 #let yr(v) = {
@@ -354,7 +356,7 @@
       if award != none and award != "" { parts.push("(" + award + ")") }
       if emph2 != none and emph2 != "" { parts.push("(" + emph2 + ")") }
 
-      v(0.38em)
+      v(0.22em)
       pad(left: 2.2em)[
         #place(left, dx: -1.2em)[--]
         #parts.join(" | ")
