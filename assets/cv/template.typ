@@ -8,6 +8,14 @@
 #set page(
   paper: "a4",
   margin: (top: 2cm, bottom: 2cm, left: 2.2cm, right: 2.2cm),
+  footer: context [
+    #set text(size: 8pt, fill: luma(130))
+    #align(center)[
+      #data.name
+      #h(0.6em)—#h(0.6em)
+      Page #counter(page).display() of #counter(page).final().first()
+    ]
+  ],
 )
 
 #set text(font: "New Computer Modern", size: 10.5pt, lang: "en")
@@ -18,7 +26,7 @@
 // Gap between separate entries in a section.
 #let entry-gap = 0.65em
 // Gap between the subtitle line and the body text / bullet list below it.
-#let subtitle-body-gap = 0.05em
+#let subtitle-body-gap = -0.1em
 // Gap between individual bullet/highlight lines within one entry.
 #let item-gap = 0.32em
 
@@ -143,15 +151,14 @@
 }
 
 // ── Teaching Experience ───────────────────────────────────────────────────────
-// Roles in this set are collapsed into a single bold heading + bulleted list.
-// All other roles are rendered as individual full entries.
+// "Teaching Assistant" and "Guest Lecturer" roles are collapsed into a single
+// bold heading + bulleted list. All other roles render as individual entries.
 
 #let grouped-teaching-roles = ("Teaching Assistant", "Guest Lecturer")
 
 #if data.at("teaching_experience", default: ()).len() > 0 {
   section-rule("Teaching Experience")
 
-  // Collect entries in order of first appearance per role.
   let role-order = ()
   let role-groups = (:)
   for entry in data.teaching_experience {
@@ -167,7 +174,6 @@
   for role in role-order {
     let group = role-groups.at(role)
     if grouped-teaching-roles.contains(role) {
-      // Grouped: bold role heading, one bullet per course.
       text(weight: "bold", role)
       v(subtitle-body-gap)
       for e in group {
@@ -181,7 +187,6 @@
       }
       v(entry-gap)
     } else {
-      // Individual entry: full header layout.
       let e = group.first()
       entry-header(
         role + ", " + e.course,
@@ -194,23 +199,30 @@
   }
 }
 
-// ── Publications ──────────────────────────────────────────────────────────────
+// ── Mentoring Experience ──────────────────────────────────────────────────────
 
-// Bold "Burnham, Emilie" (or any variant matching the CV owner's name) in
-// an author string and join authors with "; " instead of ", ".
-#let format-authors(authors, owner-name) = {
-  let parts = authors.map(a => {
-    if a.contains(owner-name) or owner-name.contains(a) or a.starts-with("Burnham") {
-      strong(a)
-    } else {
-      a
+#if data.at("mentoring_experience", default: ()).len() > 0 {
+  section-rule("Mentoring Experience")
+  for entry in data.mentoring_experience {
+    entry-header(
+      entry.role + ", " + entry.course,
+      entry.institution,
+      yr(entry.at("start_year", default: none)),
+      entry.at("location", default: ""),
+    )
+    let s = entry.at("summary", default: none)
+    if s != none and s != "" {
+      v(subtitle-body-gap)
+      pad(left: 0.8em, text(size: 9.5pt, s))
     }
-  })
-  parts.join("; ")
+    v(entry-gap)
+  }
 }
 
-// bold-owner: true for first-author pubs (highlight your name), false for co-author lists.
-#let render-pubs(pubs, bold-owner: false) = {
+// ── Publications ──────────────────────────────────────────────────────────────
+
+#let render-pubs(pubs) = {
+  // Last name used to identify the CV owner across "Last, First" and "First Last" formats.
   let last = data.at("name", default: "Burnham").split(" ").last()
   for (i, pub) in pubs.enumerate() {
     let year    = yr(pub.at("year",    default: none))
@@ -219,11 +231,7 @@
 
     let formatted-authors = {
       let parts = pub.authors.map(a => {
-        if bold-owner and (a.starts-with(last) or a.contains(last)) {
-          strong(a)
-        } else {
-          a
-        }
+        if a.starts-with(last) or a.contains(last) { strong(a) } else { a }
       })
       parts.join("; ")
     }
@@ -256,7 +264,7 @@
 
 #if data.at("first_author_publications", default: ()).len() > 0 {
   section-rule("First-Author Publications")
-  render-pubs(data.first_author_publications, bold-owner: true)
+  render-pubs(data.first_author_publications)
 }
 
 #if data.at("co_author_publications", default: ()).len() > 0 {
@@ -328,7 +336,7 @@
 
 #let render-talks(talks) = {
   for talk in talks {
-    v(0.55em)
+    v(0.42em)
     pad(left: 1em)[
       #place(left, dx: -1em)[#sym.bullet]
       #emph(["] + talk.title + ["])
@@ -346,7 +354,7 @@
       if award != none and award != "" { parts.push("(" + award + ")") }
       if emph2 != none and emph2 != "" { parts.push("(" + emph2 + ")") }
 
-      v(0.18em, weak: true)
+      v(0.38em)
       pad(left: 2.2em)[
         #place(left, dx: -1.2em)[--]
         #parts.join(" | ")
