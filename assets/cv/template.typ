@@ -339,29 +339,32 @@
 #let render-talks(talks) = {
   for talk in talks {
     v(0.42em)
-    pad(left: 1em)[
-      #place(left, dx: -1em)[#sym.bullet]
-      #emph(["] + talk.title + ["])
-    ]
-    for venue in talk.at("venues", default: ()) {
-      let vname = venue.at("venue",    default: "")
-      let loc   = venue.at("location", default: "")
-      let year  = yr(venue.at("year",  default: none))
-      let award = venue.at("award",    default: none)
-      let emph2 = venue.at("emphasis", default: none)
-
-      let parts = (vname,)
-      if loc  != ""                    { parts.push(loc) }
-      if year != ""                    { parts.push(year) }
-      if award != none and award != "" { parts.push("(" + award + ")") }
-      if emph2 != none and emph2 != "" { parts.push("(" + emph2 + ")") }
-
-      v(0.22em)
-      pad(left: 2.2em)[
-        #place(left, dx: -1.2em)[--]
-        #parts.join(" | ")
+    // Title bullet and all venue lines share the same leading as wrapped text —
+    // no explicit gap between them, just natural block spacing.
+    block(spacing: 0pt)[
+      #pad(left: 1em)[
+        #place(left, dx: -1em)[#sym.bullet]
+        #emph(["] + talk.title + ["])
       ]
-    }
+      #for venue in talk.at("venues", default: ()) {
+        let vname = venue.at("venue",    default: "")
+        let loc   = venue.at("location", default: "")
+        let year  = yr(venue.at("year",  default: none))
+        let award = venue.at("award",    default: none)
+        let emph2 = venue.at("emphasis", default: none)
+
+        let parts = (vname,)
+        if loc  != ""                    { parts.push(loc) }
+        if year != ""                    { parts.push(year) }
+        if award != none and award != "" { parts.push("(" + award + ")") }
+        if emph2 != none and emph2 != "" { parts.push("(" + emph2 + ")") }
+
+        pad(left: 2.2em)[
+          #place(left, dx: -1.2em)[--]
+          #parts.join(" | ")
+        ]
+      }
+    ]
   }
 }
 
