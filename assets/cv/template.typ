@@ -342,6 +342,7 @@
     // Title bullet and all venue lines share the same leading as wrapped text —
     // no explicit gap between them, just natural block spacing.
     block(spacing: 0pt)[
+      #set block(spacing: 0.08em)
       #pad(left: 1em)[
         #place(left, dx: -1em)[#sym.bullet]
         #emph(["] + talk.title + ["])
@@ -382,13 +383,13 @@
   }
 
   if contributed.len() > 0 {
-    v(0.5em)
+    v(1.1em)
     text(weight: "bold", "Contributed Talks")
     render-talks(contributed)
   }
 
   if posters.len() > 0 {
-    v(0.5em)
+    v(1.1em)
     text(weight: "bold", "Contributed Posters")
     render-talks(posters)
   }
