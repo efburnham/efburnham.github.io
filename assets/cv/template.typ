@@ -18,7 +18,7 @@
 // Gap between separate entries in a section.
 #let entry-gap = 0.65em
 // Gap between the subtitle line and the body text / bullet list below it.
-#let subtitle-body-gap = 0.15em
+#let subtitle-body-gap = 0.05em
 // Gap between individual bullet/highlight lines within one entry.
 #let item-gap = 0.32em
 
@@ -78,8 +78,6 @@
   v(0.6em, weak: true)
   text(size: 8pt, fill: luma(100), "Last updated: " + data.at("last_updated", default: ""))
 })
-
-v(0.4em)
 
 // ── Research Interests ────────────────────────────────────────────────────────
 
@@ -211,18 +209,17 @@ v(0.4em)
   parts.join("; ")
 }
 
-#let render-pubs(pubs) = {
+// bold-owner: true for first-author pubs (highlight your name), false for co-author lists.
+#let render-pubs(pubs, bold-owner: false) = {
+  let last = data.at("name", default: "Burnham").split(" ").last()
   for (i, pub) in pubs.enumerate() {
     let year    = yr(pub.at("year",    default: none))
     let journal = pub.at("journal",    default: "")
     let url     = pub.at("url",        default: "")
-    let owner   = data.at("name", default: "Burnham")
-    // Use the last name for matching across author formats.
-    let last    = owner.split(", ").first().split(" ").last()
 
     let formatted-authors = {
       let parts = pub.authors.map(a => {
-        if a.starts-with(last) or a.contains(last) {
+        if bold-owner and (a.starts-with(last) or a.contains(last)) {
           strong(a)
         } else {
           a
@@ -259,7 +256,7 @@ v(0.4em)
 
 #if data.at("first_author_publications", default: ()).len() > 0 {
   section-rule("First-Author Publications")
-  render-pubs(data.first_author_publications)
+  render-pubs(data.first_author_publications, bold-owner: true)
 }
 
 #if data.at("co_author_publications", default: ()).len() > 0 {
@@ -331,7 +328,7 @@ v(0.4em)
 
 #let render-talks(talks) = {
   for talk in talks {
-    v(0.25em, weak: true)
+    v(0.55em)
     pad(left: 1em)[
       #place(left, dx: -1em)[#sym.bullet]
       #emph(["] + talk.title + ["])
@@ -349,13 +346,12 @@ v(0.4em)
       if award != none and award != "" { parts.push("(" + award + ")") }
       if emph2 != none and emph2 != "" { parts.push("(" + emph2 + ")") }
 
-      v(item-gap, weak: true)
+      v(0.18em, weak: true)
       pad(left: 2.2em)[
         #place(left, dx: -1.2em)[--]
         #parts.join(" | ")
       ]
     }
-    v(0.3em)
   }
 }
 
