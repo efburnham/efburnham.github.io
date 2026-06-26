@@ -1,4 +1,5 @@
 name: Emilie Burnham
+last_updated: June 26, 2026
 label: PhD Student in Astronomy and Astrophysics
 email: efb5552@psu.edu
 location: State College, PA
@@ -99,6 +100,120 @@ first_author_publications:
   journal: The Astrophysical Journal
   year: 2026
   url: https://ui.adsabs.harvard.edu/abs/2026ApJ..1001..205B/abstract
+co_author_publications:
+- title: 'Taking a Break at Cosmic Noon: Continuum-selected Low-mass Galaxies Require
+    Long Burst Cycles'
+  authors:
+  - Mintz, Abby
+  - Setton, David J
+  - Greene, Jenny E
+  - Leja, Joel
+  - Wang, Bingjie
+  - Burnham, Emilie
+  - Suess, Katherine A
+  - Atek, Hakim
+  - Bezanson, Rachel
+  - Brammer, Gabriel
+  - others
+  journal: The Astrophysical Journal
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026ApJ...998..257M/abstract
+- title: 'Occupational Health Disparities: A Profile of Firefighters and Police Officers'
+  authors:
+  - Wohlgemuth, Kealey J
+  - Conner, Michael J
+  - Burnham, Emilie
+  - Mota, Jacob A
+  journal: The Journal of Strength and Conditioning Research
+  year: 2026
+  url: https://pubmed.ncbi.nlm.nih.gov/41460691/
+- title: UNCOVER/MegaScience Finds Uniform and Highly Bursty Star Formation at 3<
+    z< 9, consistent with the High-Redshift UV Luminosity Function
+  authors:
+  - Mitsuhashi, Ikki
+  - Suess, Katherine A
+  - Leja, Joel
+  - Bezanson, Rachel
+  - Greene, Jenny E
+  - Burnham, Emilie
+  - Khullar, Gourav
+  - Mintz, Abby
+  - Nanayakkara, Themiya
+  - Glazebrook, Karl
+  - others
+  journal: arXiv preprint arXiv:2601.16284
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026arXiv260116284M/abstract
+- title: 'RUBIES: The Evolution of the Ionization Parameter from 0< z< 9'
+  authors:
+  - Cleri, Nikko J
+  - Lewis, Zach J
+  - Leja, Joel
+  - Helton, Jakob M
+  - Burnham, Emilie
+  - Curtis, Olivia
+  - de Graaff, Anna
+  - Hirschmann, Michaela
+  - Katz, Harley
+  - Maseda, Michael V
+  - others
+  journal: arXiv preprint arXiv:2605.30410
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026arXiv260530410C/abstract
+- title: Optical Strong Line Ratios Cannot Distinguish between Stellar Populations
+    and Accreting Black Holes at High Ionization Parameters and Low Metallicities
+  authors:
+  - Cleri, Nikko J
+  - Olivier, Grace M
+  - Backhaus, Bren E
+  - Leja, Joel
+  - Papovich, Casey
+  - Trump, Jonathan R
+  - Arrabal Haro, Pablo
+  - Buat, Veronique
+  - Burgarella, Denis
+  - Burnham, Emilie
+  - others
+  journal: The Astrophysical Journal
+  year: 2025
+  url: https://ui.adsabs.harvard.edu/abs/2025ApJ...994..146C/abstract
+- title: 'Population Models for Star Formation Timescales in Early Galaxies: The First
+    Step toward Solving Outshining in Star Formation History Inference'
+  authors:
+  - Wang, Bingjie
+  - Leja, Joel
+  - Atek, Hakim
+  - Bezanson, Rachel
+  - Burnham, Emilie
+  - Dayal, Pratika
+  - Feldmann, Robert
+  - Greene, Jenny E
+  - Johnson, Benjamin D
+  - Labbe, Ivo
+  - others
+  journal: The Astrophysical Journal
+  year: 2025
+  url: https://ui.adsabs.harvard.edu/abs/2025ApJ...987..184W/abstract
+- title: Hazardous alcohol use and cardiometabolic risk among firefighters
+  authors:
+  - Levitt, Danielle E
+  - Wohlgemuth, Kealey J
+  - Burnham, Emilie
+  - Conner, Michael J
+  - Collier, J Jason
+  - Mota, Jacob A
+  journal: 'Alcohol: Clinical and Experimental Research'
+  year: 2025
+  url: https://pubmed.ncbi.nlm.nih.gov/39746845/
+- title: At-risk alcohol use and cardiometabolic risk factors among first responders
+    in the US
+  authors:
+  - Levitt, Danielle E
+  - Burnham, Emilie
+  - Conner, Michael J
+  journal: Drug and Alcohol Dependence
+  year: 2024
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11831616/
 awards:
 - name: Harold and Nancy O'Connor Graduate Excellence Fund Scholarship
   year: 2025

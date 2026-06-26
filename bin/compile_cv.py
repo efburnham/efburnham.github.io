@@ -179,10 +179,11 @@ def load_bib_pubs(bib_path, cv_name_parts):
     Classify bib entries as first-author or co-author based on whether
     any of the cv_name_parts (last names) appear as the FIRST listed author.
     """
-    library = bibtexparser.parse_file(str(bib_path))
+    with open(bib_path) as fh:
+        library = bibtexparser.load(fh)
     first_pubs, co_pubs = [], []
     for entry in library.entries:
-        fields = {f.key: str(f.value) for f in entry.fields}
+        fields = entry  # bibtexparser v1: entry IS the dict
         title   = fields.get("title", "").replace("{", "").replace("}", "")
         authors_raw = fields.get("author", "")
         # split on " and "
@@ -231,20 +232,24 @@ name_parts = [p.strip() for p in full_name.replace(",", " ").split() if p.strip(
 cv_first = sections.get("First-Author Publications") or []
 cv_co    = sections.get("Co-Author Publications") or []
 
-if cv_first or cv_co:
-    # cv.yml has explicit lists — use them
-    def parse_cv_pub(e):
-        return {k: v for k, v in {
-            "title":   e.get("title"),
-            "authors": e.get("authors") or [],
-            "journal": e.get("publisher") or e.get("journal") or None,
-            "year":    extract_year(e.get("releaseDate") or e.get("date") or e.get("year")),
-            "url":     e.get("url") or None,
-        }.items() if v is not None}
-    first_pubs = [parse_cv_pub(e) for e in cv_first]
-    co_pubs    = [parse_cv_pub(e) for e in cv_co]
-else:
-    first_pubs, co_pubs = load_bib_pubs(BIB_PATH, name_parts)
+def parse_cv_pub(e):
+    return {k: v for k, v in {
+        "title":   e.get("title"),
+        "authors": e.get("authors") or [],
+        "journal": e.get("publisher") or e.get("journal") or None,
+        "year":    extract_year(e.get("releaseDate") or e.get("date") or e.get("year")),
+        "url":     e.get("url") or None,
+    }.items() if v is not None}
+
+bib_first, bib_co = load_bib_pubs(BIB_PATH, name_parts)
+
+# Use explicit cv.yml list when non-empty; otherwise fall back to bib.
+first_pubs = [parse_cv_pub(e) for e in cv_first] if cv_first else bib_first
+co_pubs    = [parse_cv_pub(e) for e in cv_co]    if cv_co    else bib_co
+
+# Sort both lists by year descending (most recent first); entries without a year go last.
+first_pubs.sort(key=lambda p: p.get("year") or 0, reverse=True)
+co_pubs.sort(   key=lambda p: p.get("year") or 0, reverse=True)
 
 # ── GitHub handle ──────────────────────────────────────────────────────────────
 
@@ -255,8 +260,11 @@ github_net = next(
 
 # ── Assemble output ────────────────────────────────────────────────────────────
 
+today = datetime.date.today().strftime("%B %d, %Y")
+
 cv_data = {k: v for k, v in {
     "name":                      cv.get("name"),
+    "last_updated":              today,
     "label":                     cv.get("label"),
     "email":                     cv.get("email"),
     "location":                  cv.get("location"),
