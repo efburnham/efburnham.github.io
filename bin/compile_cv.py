@@ -81,6 +81,7 @@ def build_teaching(entries):
             "role":        e.get("role"),
             "start_year":  extract_year(e.get("start_date")),
             "location":    e.get("location"),
+            "summary":     e.get("summary") or None,
         }
         result.append({k: v for k, v in h.items() if v is not None})
     return result
@@ -232,10 +233,29 @@ name_parts = [p.strip() for p in full_name.replace(",", " ").split() if p.strip(
 cv_first = sections.get("First-Author Publications") or []
 cv_co    = sections.get("Co-Author Publications") or []
 
+def split_authors(raw):
+    """
+    cv.yml may store all authors as one comma-separated string inside a
+    single-element list, e.g. ["Emilie Burnham, Bingjie Wang, ..., and others"].
+    Expand that into individual author strings.
+    """
+    result = []
+    for item in (raw or []):
+        s = str(item).strip()
+        # Multiple authors in one string: 2+ commas OR contains " and "
+        if s.count(",") >= 2 or (" and " in s and "," in s):
+            s = re.sub(r",?\s+and\s+", ", ", s)   # normalise ", and " → ", "
+            parts = [p.strip() for p in s.split(",")
+                     if p.strip() and p.strip().lower() not in ("others", "et al.")]
+            result.extend(parts)
+        else:
+            result.append(s)
+    return result
+
 def parse_cv_pub(e):
     return {k: v for k, v in {
         "title":   e.get("title"),
-        "authors": e.get("authors") or [],
+        "authors": split_authors(e.get("authors") or []),
         "journal": e.get("publisher") or e.get("journal") or None,
         "year":    extract_year(e.get("releaseDate") or e.get("date") or e.get("year")),
         "url":     e.get("url") or None,
@@ -273,7 +293,10 @@ cv_data = {k: v for k, v in {
     "education":                 build_education(sections.get("Education")),
     "research_experience":       build_experience(sections.get("Research Experience")),
     "industry_experience":       build_experience(sections.get("Industry Experience")),
-    "teaching_experience":       build_teaching(sections.get("Teaching Experience")),
+    "teaching_experience":       build_teaching([e for e in (sections.get("Teaching Experience") or [])
+                                                  if e.get("role") != "Undergraduate Research Mentor"]),
+    "mentoring_experience":      build_teaching([e for e in (sections.get("Teaching Experience") or [])
+                                                  if e.get("role") == "Undergraduate Research Mentor"]),
     "first_author_publications": first_pubs,
     "co_author_publications":    co_pubs,
     "awards":                    build_awards(sections.get("Awards")),

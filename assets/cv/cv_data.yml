@@ -72,11 +72,6 @@ industry_experience:
     pipeline to analyze and visualize health data to employers of first responders.
 teaching_experience:
 - institution: Penn State University
-  course: Students Together for Astronomical Research (STAR) Program
-  role: Undergraduate Research Mentor
-  start_year: 2026
-  location: State College, PA
-- institution: Penn State University
   course: 'ASTRO 291: Astronomical Methods and the Solar System'
   role: Guest Lecturer
   start_year: 2025
@@ -91,12 +86,28 @@ teaching_experience:
   role: Teaching Assistant
   start_year: 2022
   location: Fort Worth, TX
+mentoring_experience:
+- institution: Penn State University
+  course: Students Together for Astronomical Research (STAR) Program
+  role: Undergraduate Research Mentor
+  start_year: 2026
+  location: State College, PA
+  summary: Directly mentored undergraduate student Allyson Garcia on astrophysics
+    research methodologies.
 first_author_publications:
 - title: 'It''s More Complicated Than You Think: A Forward Model to Infer the Recent
     Star Formation History, Bursty or Not, of Galaxy Populations'
   authors:
-  - Emilie Burnham, Bingjie Wang, Joel Leja, Owen Gonzales, Jenny E Greene, Kartheik
-    G Iyer, Abby Mintz, David J Setton, Sarah Wellons, Rachel Bezanson, and others
+  - Emilie Burnham
+  - Bingjie Wang
+  - Joel Leja
+  - Owen Gonzales
+  - Jenny E Greene
+  - Kartheik G Iyer
+  - Abby Mintz
+  - David J Setton
+  - Sarah Wellons
+  - Rachel Bezanson
   journal: The Astrophysical Journal
   year: 2026
   url: https://ui.adsabs.harvard.edu/abs/2026ApJ..1001..205B/abstract
