@@ -19,14 +19,18 @@
 )
 
 #set text(font: "New Computer Modern", size: 10.5pt, lang: "en")
-#set par(justify: true, leading: 0.75em)
+#set par(justify: true, leading: 0.55em)
+
+// ── Spacing constants ─────────────────────────────────────────────────────────
+
+// Gap between separate entries in a section.
+#let entry-gap = 0.65em
+// Gap between the subtitle line and the body text / bullet list below it.
+#let subtitle-body-gap = 0.35em
+// Gap between individual bullet/highlight lines within one entry.
+#let item-gap = 0.22em
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-// Vertical gap between entries within a section.
-#let entry-gap = 0.65em
-// Gap between sub-items (bullet lines, highlights) within one entry.
-#let item-gap  = 0.3em
 
 #let section-rule(title) = {
   v(1.1em)
@@ -36,13 +40,11 @@
   v(0.4em)
 }
 
-// Return "" for null/empty values; otherwise str(int(v)).
 #let yr(v) = {
   if v == none or v == "" { "" }
   else { str(int(v)) }
 }
 
-// "2023–" for open-ended, "2021" for single year, "2021–2023" for ranges.
 #let yr-range(s, e) = {
   let a = yr(s)
   let b = yr(e)
@@ -51,15 +53,16 @@
   else           { a + "–" + b }
 }
 
-// Two-column entry header.
-// left-top is always bold; left-bot is plain; right is right-aligned.
+// Two-column header: left-top bold, left-bot italic, right plain.
+// title-subtitle-gap controls vertical distance between the two left lines.
 #let entry-header(left-top, left-bot, right-top, right-bot) = {
   grid(
     columns: (1fr, auto),
     column-gutter: 0.5em,
+    row-gutter: 0.12em,
     [
       *#left-top*
-      #if left-bot != none and left-bot != "" [ \ #left-bot]
+      #if left-bot != none and left-bot != "" [ \ #emph(left-bot)]
     ],
     align(right)[
       #if right-top != none and right-top != "" [*#right-top*]
@@ -74,14 +77,13 @@
   text(size: 22pt, weight: "bold", upper(data.name))
   linebreak()
   emph(data.label)
-  linebreak()
-  v(0.25em, weak: true)
+  v(0.55em, weak: true)
   let contact = data.email + "  |  " + data.location
   let gh = data.at("github", default: "")
   if gh != "" { contact = contact + "  |  github.com/" + gh }
   text(size: 9.5pt, contact)
   linebreak()
-  v(0.1em, weak: true)
+  v(0.25em, weak: true)
   text(size: 8pt, fill: luma(100), "Last updated: " + data.at("last_updated", default: ""))
 })
 
@@ -107,7 +109,7 @@ v(0.4em)
     )
     let hl = edu.at("highlights", default: ())
     if hl.len() > 0 {
-      v(item-gap, weak: true)
+      v(subtitle-body-gap)
       for item in hl {
         pad(left: 0.8em)[#sym.bullet #item]
         v(item-gap, weak: true)
@@ -117,7 +119,7 @@ v(0.4em)
   }
 }
 
-// ── Experience helper (position bold, company plain) ─────────────────────────
+// ── Experience helper (position bold+italic, company plain) ───────────────────
 
 #let render-experience(entries) = {
   for entry in entries {
@@ -129,7 +131,7 @@ v(0.4em)
     )
     let s = entry.at("summary", default: "")
     if s != "" {
-      v(item-gap, weak: true)
+      v(subtitle-body-gap)
       pad(left: 0.8em, text(s))
     }
     v(entry-gap)
@@ -150,7 +152,7 @@ v(0.4em)
   render-experience(data.industry_experience)
 }
 
-// ── Teaching Experience (role bold, institution plain) ────────────────────────
+// ── Teaching Experience ───────────────────────────────────────────────────────
 
 #if data.at("teaching_experience", default: ()).len() > 0 {
   section-rule("Teaching Experience")
@@ -167,12 +169,38 @@ v(0.4em)
 
 // ── Publications ──────────────────────────────────────────────────────────────
 
+// Bold "Burnham, Emilie" (or any variant matching the CV owner's name) in
+// an author string and join authors with "; " instead of ", ".
+#let format-authors(authors, owner-name) = {
+  let parts = authors.map(a => {
+    if a.contains(owner-name) or owner-name.contains(a) or a.starts-with("Burnham") {
+      strong(a)
+    } else {
+      a
+    }
+  })
+  parts.join("; ")
+}
+
 #let render-pubs(pubs) = {
   for (i, pub) in pubs.enumerate() {
-    let authors  = pub.authors.join(", ")
-    let year     = yr(pub.at("year",    default: none))
-    let journal  = pub.at("journal",    default: "")
-    let url      = pub.at("url",        default: "")
+    let year    = yr(pub.at("year",    default: none))
+    let journal = pub.at("journal",    default: "")
+    let url     = pub.at("url",        default: "")
+    let owner   = data.at("name", default: "Burnham")
+    // Use the last name for matching across author formats.
+    let last    = owner.split(", ").first().split(" ").last()
+
+    let formatted-authors = {
+      let parts = pub.authors.map(a => {
+        if a.starts-with(last) or a.contains(last) {
+          strong(a)
+        } else {
+          a
+        }
+      })
+      parts.join("; ")
+    }
 
     let venue-str = if journal != "" and year != "" {
       journal + " (" + year + ")."
@@ -194,7 +222,7 @@ v(0.4em)
       #place(left, dx: -1.8em)[
         #text(size: 9pt, weight: "bold")[\[#str(i + 1)\]]
       ]
-      #text(size: 9.5pt)[#(authors + ". ") #title-content #venue-str]
+      #text(size: 9.5pt)[#formatted-authors. #title-content #venue-str]
     ]
     v(0.45em)
   }
@@ -223,7 +251,7 @@ v(0.4em)
     )
     let s = award.at("summary", default: none)
     if s != none and s != "" {
-      v(item-gap, weak: true)
+      v(subtitle-body-gap)
       pad(left: 0.8em, text(size: 9.5pt, s))
     }
     v(entry-gap)
@@ -243,14 +271,14 @@ v(0.4em)
     )
     let s = entry.at("summary", default: "")
     if s != "" {
-      v(item-gap, weak: true)
+      v(subtitle-body-gap)
       pad(left: 0.8em, text(s))
     }
     v(entry-gap)
   }
 }
 
-// ── Outreach (event title bold, organization plain) ───────────────────────────
+// ── Outreach ──────────────────────────────────────────────────────────────────
 
 #if data.at("outreach", default: ()).len() > 0 {
   section-rule("Outreach")
@@ -263,7 +291,7 @@ v(0.4em)
     )
     let s = entry.at("summary", default: none)
     if s != none and s != "" {
-      v(item-gap, weak: true)
+      v(subtitle-body-gap)
       pad(left: 0.8em, text(size: 9.5pt, s))
     }
     v(entry-gap)
