@@ -338,11 +338,11 @@
 
 #let render-talks(talks) = {
   for talk in talks {
-    v(0.42em)
+    v(0.5em)
     // Title bullet and all venue lines share the same leading as wrapped text —
     // no explicit gap between them, just natural block spacing.
     block(spacing: 0pt)[
-      #set block(spacing: 0.3em)
+      #set block(spacing: 0.5em)
       #pad(left: 1em)[
         #place(left, dx: -1em)[#sym.bullet]
         #emph(["] + talk.title + ["])
