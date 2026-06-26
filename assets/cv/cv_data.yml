@@ -1,90 +1,366 @@
+---
 name: Emilie Burnham
-label: PhD Candidate in Astronomy & Astrophysics
+label: PhD Student in Astronomy and Astrophysics
 email: efb5552@psu.edu
 location: State College, PA
 github: efburnham
-summary: >-
-  Observational astronomer focused on exoplanet atmospheres, stellar contamination,
-  and transmission spectroscopy with JWST.
+summary: Galaxy formation and evolution; large-scale surveys; scientific software
+  development; machine-learning; stellar population synthesis; SED fitting; cosmological
+  simulations.
 education:
-  - institution: Pennsylvania State University
-    degree: PhD
-    area: Astronomy and Astrophysics
-    start_year: 2022
-    location: State College, PA
-  - institution: University of California, Santa Cruz
-    degree: BS
-    area: Physics
-    start_year: 2018
-    end_year: 2022
-    location: Santa Cruz, CA
+- institution: The Pennsylvania State University
+  degree: PhD, MS
+  area: Astronomy & Astrophysics
+  start_year: 2023
+  end_year: 2029
+  location: State College, PA, US
+  highlights:
+  - 'Thesis Advisor: Dr. Joel Leja.'
+  - 'Expected graduation date: May 2029.'
+- institution: Texas Christian University
+  degree: BSc
+  area: Physics & Astronomy
+  start_year: 2019
+  end_year: 2022
+  location: Fort Worth, TX, US
+  highlights:
+  - 'Thesis Advisor: Dr. Mia Bovill.'
+  - Graduated summa cum laude.
 research_experience:
-  - company: Penn State University
-    position: Graduate Research Assistant
-    start_year: 2022
-    location: State College, PA
-    summary: Transmission spectroscopy of exoplanet atmospheres with JWST NIRSpec and NIRISS.
+- company: Penn State University
+  position: Graduate Research Assistant
+  start_year: 2023
+  location: State College, PA, US
+  summary: Developed tools (ESPS, PIGLET) to enable fast modeling of galaxy spectra
+    in large surveys. Applied these tools to infer the recent star formation histories
+    of galaxy populations across cosmic time, with a particular emphasis on burstiness.
+    Presented results at conferences and seminars, and published research in peer-reviewed
+    journals.
+- company: Cosmic Dawn Center (DAWN), Neils Bohr Institute, University of Copenhagen
+  position: NSF DAWN IRES Senior Scholar
+  start_year: 2026
+  end_year: 2026
+  location: Copenhagen, Denmark
+  summary: Mentored undergraduate students participating in the program and led workshops
+    on research skills used in the field of galaxy formation and evolution. Continued
+    thesis research while in residence at DAWN.
+- company: University of Colorado at Boulder
+  position: NSF REU Research Assistant
+  start_year: 2021
+  end_year: 2021
+  location: Remote
+  summary: Conducted research on how well modern radiative transfer codes can recover
+    the absorption features in different spatial features (e.g., plage, faculae) of
+    the solar disk. Presented results at the 2021 Winter American Geophysical Union
+    meeting.
+- company: Texas Christian University
+  position: Undergraduate Research Assistant
+  start_year: 2020
+  end_year: 2023
+  location: Fort Worth, TX, US
+  summary: Conducted research on modeling the observable affects of a warm dark matter
+    cosmology in the JWST era. Reduced spectra of nearby open clusters to calculate
+    alpha element abundances. Presented results at the 2023 Winter American Astronomical
+    Society meeting.
+industry_experience:
+- company: Front Line Mobile Health, PLLC
+  position: Clinical Data Analyst
+  start_year: 2023
+  end_year: 2024
+  location: Georgetown, TX, US
+  summary: Conducted research on the health of first responders. Developed a data
+    pipeline to analyze and visualize health data to employers of first responders.
+teaching_experience:
+- institution: Penn State University
+  course: Students Together for Astronomical Research (STAR) Program
+  role: Undergraduate Research Mentor
+  start_year: 2026
+  location: State College, PA
+- institution: Penn State University
+  course: 'ASTRO 291: Astronomical Methods and the Solar System'
+  role: Guest Lecturer
+  start_year: 2025
+  location: State College, PA
+- institution: Texas Christian University
+  course: 'PHYS 10293: Archeoastronomy'
+  role: Teaching Assistant
+  start_year: 2023
+  location: Fort Worth, TX
+- institution: Texas Christian University
+  course: 'PHYS 20475: Physics I for Majors'
+  role: Teaching Assistant
+  start_year: 2022
+  location: Fort Worth, TX
 first_author_publications:
-  - title: "Transmission Spectroscopy of a Sub-Neptune with JWST NIRSpec"
-    authors:
-      - "Burnham, Emilie F."
-      - "Espinoza, Nestor"
-      - "Fortney, Jonathan J."
-    journal: The Astrophysical Journal Letters
-    year: 2024
+- title: 'It''s More Complicated Than You Think: A Forward Model to Infer the Recent
+    Star Formation History, Bursty or Not, of Galaxy Populations'
+  authors:
+  - Emilie Burnham, Bingjie Wang, Joel Leja, Owen Gonzales, Jenny E Greene, Kartheik
+    G Iyer, Abby Mintz, David J Setton, Sarah Wellons, Rachel Bezanson, and others
+  journal: The Astrophysical Journal
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026ApJ..1001..205B/abstract
 co_author_publications:
-  - title: "Stellar Contamination in Transmission Spectra"
-    authors:
-      - "Espinoza, Nestor"
-      - "Burnham, Emilie F."
-      - "Wakeford, Hannah R."
-    journal: The Astronomical Journal
-    year: 2023
+- title: Optical Strong Line Ratios Cannot Distinguish between Stellar Populations
+    and Accreting Black Holes at High Ionization Parameters and Low Metallicities
+  authors:
+  - Cleri, Nikko J
+  - Olivier, Grace M
+  - Backhaus, Bren E
+  - Leja, Joel
+  - Papovich, Casey
+  - Trump, Jonathan R
+  - Arrabal Haro, Pablo
+  - Buat, Veronique
+  - Burgarella, Denis
+  - Burnham, Emilie
+  - others
+  journal: The Astrophysical Journal
+  year: 2025
+  url: https://ui.adsabs.harvard.edu/abs/2025ApJ...994..146C/abstract
+- title: 'Population Models for Star Formation Timescales in Early Galaxies: The First
+    Step toward Solving Outshining in Star Formation History Inference'
+  authors:
+  - Wang, Bingjie
+  - Leja, Joel
+  - Atek, Hakim
+  - Bezanson, Rachel
+  - Burnham, Emilie
+  - Dayal, Pratika
+  - Feldmann, Robert
+  - Greene, Jenny E
+  - Johnson, Benjamin D
+  - Labbe, Ivo
+  - others
+  journal: The Astrophysical Journal
+  year: 2025
+  url: https://ui.adsabs.harvard.edu/abs/2025ApJ...987..184W/abstract
+- title: Hazardous alcohol use and cardiometabolic risk among firefighters
+  authors:
+  - Levitt, Danielle E
+  - Wohlgemuth, Kealey J
+  - Burnham, Emilie
+  - Conner, Michael J
+  - Collier, J Jason
+  - Mota, Jacob A
+  journal: 'Alcohol: Clinical and Experimental Research'
+  year: 2025
+  url: https://pubmed.ncbi.nlm.nih.gov/39746845/
+- title: At-risk alcohol use and cardiometabolic risk factors among first responders
+    in the US
+  authors:
+  - Levitt, Danielle E
+  - Burnham, Emilie
+  - Conner, Michael J
+  journal: Drug and Alcohol Dependence
+  year: 2024
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11831616/
+- title: 'Taking a Break at Cosmic Noon: Continuum-selected Low-mass Galaxies Require
+    Long Burst Cycles'
+  authors:
+  - Mintz, Abby
+  - Setton, David J
+  - Greene, Jenny E
+  - Leja, Joel
+  - Wang, Bingjie
+  - Burnham, Emilie
+  - Suess, Katherine A
+  - Atek, Hakim
+  - Bezanson, Rachel
+  - Brammer, Gabriel
+  - others
+  journal: The Astrophysical Journal
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026ApJ...998..257M/abstract
+- title: 'Occupational Health Disparities: A Profile of Firefighters and Police Officers'
+  authors:
+  - Wohlgemuth, Kealey J
+  - Conner, Michael J
+  - Burnham, Emilie
+  - Mota, Jacob A
+  journal: The Journal of Strength and Conditioning Research
+  year: 2026
+  url: https://pubmed.ncbi.nlm.nih.gov/41460691/
+- title: UNCOVER/MegaScience Finds Uniform and Highly Bursty Star Formation at 3<
+    z< 9, consistent with the High-Redshift UV Luminosity Function
+  authors:
+  - Mitsuhashi, Ikki
+  - Suess, Katherine A
+  - Leja, Joel
+  - Bezanson, Rachel
+  - Greene, Jenny E
+  - Burnham, Emilie
+  - Khullar, Gourav
+  - Mintz, Abby
+  - Nanayakkara, Themiya
+  - Glazebrook, Karl
+  - others
+  journal: arXiv preprint arXiv:2601.16284
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026arXiv260116284M/abstract
+- title: 'RUBIES: The Evolution of the Ionization Parameter from 0< z< 9'
+  authors:
+  - Cleri, Nikko J
+  - Lewis, Zach J
+  - Leja, Joel
+  - Helton, Jakob M
+  - Burnham, Emilie
+  - Curtis, Olivia
+  - de Graaff, Anna
+  - Hirschmann, Michaela
+  - Katz, Harley
+  - Maseda, Michael V
+  - others
+  journal: arXiv preprint arXiv:2605.30410
+  year: 2026
+  url: https://ui.adsabs.harvard.edu/abs/2026arXiv260530410C/abstract
 awards:
-  - name: NSF Graduate Research Fellowship
-    awarder: National Science Foundation
-    year: 2023
-  - name: Bunton-Waller Fellowship
-    awarder: Pennsylvania State University
-    year: 2022
+- name: Harold and Nancy O'Connor Graduate Excellence Fund Scholarship
+  year: 2025
+  awarder: Penn State Eberly College of Science
+- name: Frymoyer Award
+  year: 2025
+  awarder: Institute of Gravitation and the Cosmos
+- name: Zaccheus Daniel Foundation for Astronomical Science Scholarship
+  year: 2025
+  awarder: Penn State Department of Astronomy and Astrophysics
+- name: University Graduate Fellowship
+  year: 2024
+  awarder: Penn State University
+- name: Stephen B. Brumbach Distinguished Graduate Fellowship in Science
+  year: 2023
+  awarder: Penn State University
+- name: Verne M. Willaman Distinguished Graduate Fellowship in Science
+  year: 2023
+  awarder: Penn State University
+- name: Homer F. Braddock Scholarship in Biology, Chemistry, and Physics
+  year: 2023
+  awarder: Penn State University
+- name: Dr. C.A. Quarles Physics and Astronomy Scholarship
+  year: 2021
+  awarder: Texas Christian University Department of Physics and Astronomy
+- name: Joseph Morgan Physics Scholarship
+  year: 2021
+  awarder: Texas Christian University Department of Physics and Astronomy
+- name: Bob Bolen Leadership Scholarship
+  year: 2021
+  awarder: The Sarah & Ross Perot Jr. Foundation, Texas Christian University
+- name: TCU Scholar
+  year: 2021
+  awarder: Texas Christian University
+- name: College of Science and Engineering Dean's List
+  year: 2019
+  awarder: Texas Christian University College of Science and Engineering. Six-time
+    awardee.
 leadership_service:
-  - title: Graduate Student Representative
-    organization: Penn State Department of Astronomy
-    start_year: 2023
-    end_year: 2024
-    location: State College, PA
+- title: Astronomy on Tap State College Organizer
+  organization: Astronomy on Tap State College
+  start_year: 2024
+  location: State College, PA
+  summary: Organized monthly public talks on astronomy topics, coordinated with speakers,
+    and promoted events to engage the local community in astronomy outreach.
+- title: Society of Physics Students (SPS) President and Treasurer
+  organization: Texas Christian University Chapter of the Society of Physics Students
+  start_year: 2021
+  end_year: 2022
+  location: Fort Worth, TX
+  summary: Led the student chapter of the Society of Physics Students, organized events
+    and meetings, managed finances, and coordinated events to grow participation across
+    departmennts.
 outreach:
-  - title: Astronomy on Tap Speaker
-    organization: Astronomy on Tap State College
-    year: 2023
-    location: State College, PA
+- title: Public Lecture on "Why is Astronomy a Big Data Field?"
+  organization: Astronomy on Tap State College
+  year: 2025
+  location: State College, PA
+- title: Public Lecture on "The Milky Way Through the Rainbow"
+  organization: Astro Night at Penn State
+  year: 2024
+  location: State College, PA
+- title: Public Lecture on "Suprises at the Edge fo the Universe Found with JWST"
+  organization: Central Pennsylvania Observer's Society
+  year: 2024
+  location: State College, PA
 presentations:
   invited_talks:
-    - title: "Probing Exoplanet Atmospheres with JWST Transmission Spectroscopy"
-      venues:
-        - venue: Penn State University Astrophysics Seminar
-          location: State College, PA
-          year: 2024
-        - venue: University of Arizona Steward Observatory Colloquium
-          location: Tucson, AZ
-          year: 2024
+  - title: 'It''s More Complicated Than You Think: Inferring the Recent Star Formation
+      History, Bursty or Not, in Galaxy Populations'
+    venues:
+    - venue: Penn State University Center for Astrostatistics and Astroinformatics
+        Lunch Seminar
+      location: State College, PA
+      year: 2026
+    - venue: University of Copenhagen Cosmic Dawn Center (DAWN) Cake Talk Seminar
+      location: Copenhagen, Denmark
+      year: 2026
+    - venue: University of Pittsburgh Joint Extragalactic Group Meeting
+      location: Pittsburgh, PA
+      year: 2025
+    - venue: Penn State University Institute for Gravitation and the Cosmos Primordial
+        Universe and Gravitation Seminar
+      location: State College, PA
+      year: 2025
+    - venue: Princeton University Galactic/Extragalactic Reading Group
+      location: Princeton, NJ
+      year: 2025
   contributed_talks:
-    - title: "Stellar Contamination Corrections for JWST Transit Observations"
-      venues:
-        - venue: American Astronomical Society 243rd Meeting
-          location: New Orleans, LA
-          year: 2024
-          award: Dissertation Talk
+  - title: 'It''s More Complicated Than You Think: Inferring the Recent Star Formation
+      History, Bursty or Not, in Galaxy Populations'
+    venues:
+    - venue: Eberly Research Showcase
+      location: State College, PA
+      year: 2025
+      award: First-place prize
+    - venue: Penn State University Department of Astronomy and Astrophysics Lunch
+        Talk Seminar
+      location: State College, PA
+      year: 2025
+    - venue: 7th Neighborhood Workshop on Astrophysics and Cosmology
+      location: State College, PA
+      year: 2025
+      award: First-place prize
+  - title: The Need for Speed in Galaxy Evolution Surveys
+    venues:
+    - venue: Penn State Astronomy and Astrophysics Lunch Talk Seminar
+      location: State College, PA
+      year: 2025
+  - title: Measuring the Family Histories of Bursty Star Formation within Galaxy Populations
+    venues:
+    - venue: Penn State Astronomy and Astrophysics Lunch Talk Seminar
+      location: State College, PA
+      year: 2024
+  - title: Forensic Astronomy
+    venues:
+    - venue: Texas Christian University Annual Student Research Symposium
+      location: Fort Worth, TX
+      year: 2021
   contributed_posters:
-    - title: "NIRSpec G395H Transmission Spectrum of a Sub-Neptune"
-      venues:
-        - venue: JWST Early Science Symposium
-          location: Baltimore, MD
-          year: 2023
+  - title: 'It''s More Complicated Than You Think: Inferring the Recent Star Formation
+      History, Bursty or Not, in Galaxy Populations'
+    venues:
+    - venue: Carnegie Mellon University Statistical Methods for the Physical Sciences
+        Research Center Workshop
+      location: Pittsburgh, PA
+      year: 2025
+      emphasis: simulation-based inference
+    - venue: Penn State University Institute for Computational Data Sciences Symposium
+      location: State College, PA
+      year: 2025
+      emphasis: computational methods
+  - title: Warm or Cold Dark Matter? A Love-Heat Relationship
+    venues:
+    - venue: Texas Christian University Annual Student Research Symposium
+      location: Fort Worth, TX
+      year: 2022
+    - venue: American Astronomical Society Winter Meeting
+      location: Seattle, WA
+      year: 2023
+  - title: 'Spectral Runway: An Analysis of Solar Balmer Lines through Observations
+      and Models'
+    venues:
+    - venue: American Geophysical Union Winter Meeting
+      location: New Orleans, LA
+      year: 2021
 skills:
-  - label: Programming
-    keywords: "Python, Ruby, IDL, Bash"
-  - label: Software
-    keywords: "Jupyter, LaTeX, Git, IRAF"
-  - label: Observing
-    keywords: "JWST NIRSpec, NIRISS, Spitzer IRAC, ground-based spectroscopy"
+- label: Computing
+  keywords: Python, JAX, Machine Learning, Data Analysis, Data Visualization, Software
+    Development, High-Performance Computing, Git, Cloud Computing, GPUs
