@@ -7,10 +7,8 @@ on:
     paths:
       - "_data/cv.yml"
       - "_bibliography/papers.bib"
-      - "_config.yml"
       - "assets/cv/template.typ"
-      - "bin/compile_cv_pdf.rb"
-      - "bin/typst_compile.py"
+      - "bin/compile_cv.py"
   workflow_call:
   workflow_dispatch:
 permissions:
@@ -21,21 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: |
-          bundle install --jobs 4 --retry 3
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Verify typst is available
         run: python3 -c "import typst; print('typst', typst.__version__)"
       - name: Compile CV
-        run: bundle exec ruby bin/compile_cv_pdf.rb
+        run: python3 bin/compile_cv.py
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
