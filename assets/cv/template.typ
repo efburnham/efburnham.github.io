@@ -8,14 +8,6 @@
 #set page(
   paper: "a4",
   margin: (top: 2cm, bottom: 2cm, left: 2.2cm, right: 2.2cm),
-  footer: context [
-    #set text(size: 8pt, fill: luma(130))
-    #align(center)[
-      #data.name
-      #h(0.6em)—#h(0.6em)
-      Page #counter(page).display() of #counter(page).final().first()
-    ]
-  ],
 )
 
 #set text(font: "New Computer Modern", size: 10.5pt, lang: "en")
@@ -26,9 +18,9 @@
 // Gap between separate entries in a section.
 #let entry-gap = 0.65em
 // Gap between the subtitle line and the body text / bullet list below it.
-#let subtitle-body-gap = 0.35em
+#let subtitle-body-gap = 0.15em
 // Gap between individual bullet/highlight lines within one entry.
-#let item-gap = 0.22em
+#let item-gap = 0.32em
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -83,7 +75,7 @@
   if gh != "" { contact = contact + "  |  github.com/" + gh }
   text(size: 9.5pt, contact)
   linebreak()
-  v(0.25em, weak: true)
+  v(0.6em, weak: true)
   text(size: 8pt, fill: luma(100), "Last updated: " + data.at("last_updated", default: ""))
 })
 
@@ -153,17 +145,54 @@ v(0.4em)
 }
 
 // ── Teaching Experience ───────────────────────────────────────────────────────
+// Roles in this set are collapsed into a single bold heading + bulleted list.
+// All other roles are rendered as individual full entries.
+
+#let grouped-teaching-roles = ("Teaching Assistant", "Guest Lecturer")
 
 #if data.at("teaching_experience", default: ()).len() > 0 {
   section-rule("Teaching Experience")
+
+  // Collect entries in order of first appearance per role.
+  let role-order = ()
+  let role-groups = (:)
   for entry in data.teaching_experience {
-    entry-header(
-      entry.role + ", " + entry.course,
-      entry.institution,
-      yr(entry.at("start_year", default: none)),
-      entry.at("location", default: ""),
-    )
-    v(entry-gap)
+    let role = entry.role
+    if role not in role-order { role-order.push(role) }
+    if role in role-groups {
+      role-groups.insert(role, role-groups.at(role) + (entry,))
+    } else {
+      role-groups.insert(role, (entry,))
+    }
+  }
+
+  for role in role-order {
+    let group = role-groups.at(role)
+    if grouped-teaching-roles.contains(role) {
+      // Grouped: bold role heading, one bullet per course.
+      text(weight: "bold", role)
+      v(subtitle-body-gap)
+      for e in group {
+        let year = yr(e.at("start_year", default: none))
+        let loc  = e.at("location", default: "")
+        let line = e.course + ", " + e.institution
+        if loc  != "" { line = line + " | " + loc }
+        if year != "" { line = line + " | " + year }
+        pad(left: 0.8em)[#sym.bullet #line]
+        v(item-gap, weak: true)
+      }
+      v(entry-gap)
+    } else {
+      // Individual entry: full header layout.
+      let e = group.first()
+      entry-header(
+        role + ", " + e.course,
+        e.institution,
+        yr(e.at("start_year", default: none)),
+        e.at("location", default: ""),
+      )
+      v(entry-gap)
+    }
   }
 }
 
@@ -339,19 +368,19 @@ v(0.4em)
   section-rule("Professional Presentations")
 
   if invited.len() > 0 {
-    text(weight: "bold", style: "italic", "Invited Talks")
+    text(weight: "bold", "Invited Talks")
     render-talks(invited)
   }
 
   if contributed.len() > 0 {
     v(0.5em)
-    text(weight: "bold", style: "italic", "Contributed Talks")
+    text(weight: "bold", "Contributed Talks")
     render-talks(contributed)
   }
 
   if posters.len() > 0 {
     v(0.5em)
-    text(weight: "bold", style: "italic", "Contributed Posters")
+    text(weight: "bold", "Contributed Posters")
     render-talks(posters)
   }
 }
