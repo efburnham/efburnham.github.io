@@ -271,7 +271,7 @@ cv:
           summary: Presented work on inferring and modelingstar formation timescales across
             galaxy populations.
       Contributed Talks:
-      - title: 'Introducing E-SPS: An Accelerated SED Fitting Code Designed for Next-Generation Spectroscopic Surveys'
+        - title: 'Introducing E-SPS: An Accelerated SED Fitting Code Designed for Next-Generation Spectroscopic Surveys'
           venues:
             - venue: DAWN Summit
               date: 2026
