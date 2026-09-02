@@ -187,8 +187,12 @@ def load_bib_pubs(bib_path, cv_name_parts):
         fields = entry  # bibtexparser v1: entry IS the dict
         title   = fields.get("title", "").replace("{", "").replace("}", "")
         authors_raw = fields.get("author", "")
-        # split on " and "
-        authors = [a.strip() for a in re.split(r"\s+and\s+", authors_raw) if a.strip()]
+        # split on " and "; preserve trailing "others" as "and others"
+        raw_parts = [a.strip() for a in re.split(r"\s+and\s+", authors_raw) if a.strip()]
+        has_others = raw_parts and raw_parts[-1].lower() in ("others", "et al.")
+        authors = [a for a in raw_parts if a.lower() not in ("others", "et al.")]
+        if has_others:
+            authors.append("and others")
         year    = extract_year(fields.get("year"))
         journal = (fields.get("journal") or fields.get("booktitle") or
                    fields.get("series") or fields.get("publisher") or "")
