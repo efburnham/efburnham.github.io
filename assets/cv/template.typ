@@ -233,7 +233,9 @@
 
     let formatted-authors = {
       let parts = pub.authors.map(a => {
-        if a.starts-with(last) or a.contains(last) { strong(a) } else { a }
+        if a == "and others" { emph("et al.") }
+        else if a.starts-with(last) or a.contains(last) { strong(a) }
+        else { a }
       })
       parts.join("; ")
     }
