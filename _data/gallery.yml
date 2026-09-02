@@ -44,6 +44,20 @@ albums:
         image: assets/img/marmorkirken.JPG
       - title: Prinsesse Marie at Sunset (2026)
         image: assets/img/statue.jpeg
+      - title: Partial Solar Eclipse (2026)
+        image: assets/img/eclipse.jpeg
+        caption: Picture taken at ~30% maximum coverage.
+      - title: Biskop Absalon Before Christiansborg Slot (2026)
+        image: assets/img/rider.jpeg
+      - title: Patinaed Tower (2026)
+        image: assets/img/tower.jpeg
+      - title: M1 Line to Vestamager (2026)
+        image: assets/img/m1.jpeg
+      - title: Ivar Huitfeldt Mindesmærke (2026)
+        image: assets/img/angel.jpeg
+      - title: Lift Up (2026)
+        image: assets/img/ski_lift.jpeg
+        caption: Taken while on a roadtrip in Norway.
       # - title: Bikes! (2026)
       #   image: assets/img/bikes.jpeg
       #   caption: I was too scared to ride a bike while I was there...
